@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8B4D8C4F-63CB-400A-BFE9-965EB522BB01}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DaiQuery</RootNamespace>
+    <AssemblyName>DaiQuery</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AliasableRenderer.cs" />
+    <Compile Include="ArithmeticExpression.cs" />
+    <Compile Include="ArithmeticExpressionRenderer.cs" />
+    <Compile Include="Clause.cs" />
+    <Compile Include="ClauseRenderer.cs" />
+    <Compile Include="Column.cs" />
+    <Compile Include="ColumnRenderer.cs" />
+    <Compile Include="CommonTableExpression.cs" />
+    <Compile Include="ComparisonPredicate.cs" />
+    <Compile Include="ComparisonPredicateRenderer.cs" />
+    <Compile Include="CompoundPredicateRenderer.cs" />
+    <Compile Include="Constant.cs" />
+    <Compile Include="ConstantRenderer.cs" />
+    <Compile Include="ConstantString.cs" />
+    <Compile Include="ConstantStringRenderer.cs" />
+    <Compile Include="ConstantUnicodeString.cs" />
+    <Compile Include="ConstantUnicodeStringRenderer.cs" />
+    <Compile Include="Database.cs" />
+    <Compile Include="DerivedTable.cs" />
+    <Compile Include="eArithmeticOperator.cs" />
+    <Compile Include="eClauseKeyword.cs" />
+    <Compile Include="eComparisonOperator.cs" />
+    <Compile Include="eErrorHandlingMode.cs" />
+    <Compile Include="eJoinType.cs" />
+    <Compile Include="eKeywordCase.cs" />
+    <Compile Include="eLogicalConnective.cs" />
+    <Compile Include="eRenderMode.cs" />
+    <Compile Include="eRenderOptions.cs" />
+    <Compile Include="Expression.cs" />
+    <Compile Include="ExpressionRenderer.cs" />
+    <Compile Include="FromClauseRenderer.cs" />
+    <Compile Include="IAliasableRenderer.cs" />
+    <Compile Include="IClauseBody.cs" />
+    <Compile Include="IColumn.cs" />
+    <Compile Include="IComparisonPredicate.cs" />
+    <Compile Include="ICompoundPredicate.cs" />
+    <Compile Include="IConstant.cs" />
+    <Compile Include="IConstantString.cs" />
+    <Compile Include="IdentifiedRenderer.cs" />
+    <Compile Include="IFromClause.cs" />
+    <Compile Include="IResultSet.cs" />
+    <Compile Include="IPredicate.cs" />
+    <Compile Include="ISet.cs" />
+    <Compile Include="FromClause.cs" />
+    <Compile Include="CompoundPredicate.cs" />
+    <Compile Include="IAliasable.cs" />
+    <Compile Include="IArithmeticExpression.cs" />
+    <Compile Include="IClause.cs" />
+    <Compile Include="IExpression.cs" />
+    <Compile Include="IIdentified.cs" />
+    <Compile Include="IPredicateInternal.cs" />
+    <Compile Include="IRenderable.cs" />
+    <Compile Include="IRenderer.cs" />
+    <Compile Include="IRendererFactory.cs" />
+    <Compile Include="ISelectClause.cs" />
+    <Compile Include="ISelectStatement.cs" />
+    <Compile Include="ITable.cs" />
+    <Compile Include="ITaggable.cs" />
+    <Compile Include="ResultSet.cs" />
+    <Compile Include="ResultSetRenderer.cs" />
+    <Compile Include="Set.cs" />
+    <Compile Include="Strings.cs" />
+    <Compile Include="TableRenderer.cs" />
+    <Compile Include="IWhereClause.cs" />
+    <Compile Include="MsSqlRendererFactory.cs" />
+    <Compile Include="Predicate.cs" />
+    <Compile Include="PredicateRenderer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Component.cs" />
+    <Compile Include="Renderer.cs" />
+    <Compile Include="RendererFactory.cs" />
+    <Compile Include="Schema.cs" />
+    <Compile Include="SelectClause.cs" />
+    <Compile Include="SelectClauseRenderer.cs" />
+    <Compile Include="SelectStatement.cs" />
+    <Compile Include="SelectStatementRenderer.cs" />
+    <Compile Include="Server.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="StandardRendererFactory.cs" />
+    <Compile Include="Statement.cs" />
+    <Compile Include="Table.cs" />
+    <Compile Include="TagCollection.cs" />
+    <Compile Include="WhereClause.cs" />
+    <Compile Include="WhereClauseRenderer.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
