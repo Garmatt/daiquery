@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DaiQuery
+﻿namespace DaiQuery
 {
     /// <summary>
-    /// Generates SQL code in accordance with a variety of parameters.
+    /// Generates SQL code.
     /// </summary>
     internal interface IRenderer
     {
@@ -19,12 +13,15 @@ namespace DaiQuery
     }
 
     /// <summary>
-    /// Renders a logical representation of a SQL statement, namely an <see cref="IRenderableEntity"/>, into SQL code. 
+    /// Renders an <see cref="IRenderableEntity"/> object into SQL code. 
     /// </summary>
     /// <typeparam name="IR"></typeparam>
     internal interface IRenderer<IR> : IRenderer
         where IR : IRenderableEntity
     {
+        /// <summary>
+        /// The <see cref="IRenderableEntity"/> object associated with this <see cref="IRenderer"/>.
+        /// </summary>
         IR Renderable { get; }
     }
 }

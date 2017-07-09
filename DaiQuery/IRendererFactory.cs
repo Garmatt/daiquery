@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace DaiQuery
 {
     /// <summary>
-    /// A collection of factory methods that each return a dedicated <see cref="IRenderer"/> object for an <see cref="IRenderableEntity"/> object.
+    /// Exposes a collection of factory methods that each return a dedicated <see cref="IRenderer"/> object for an <see cref="IRenderableEntity"/> object.
     /// </summary>
     internal interface IRendererFactory
     {
@@ -27,7 +27,7 @@ namespace DaiQuery
             where ICS : IConstantString;
 
         IRenderer GetIdentifiedRenderer<II>(II identified)
-            where II : IIdentified;
+            where II : IIdentifiedEntity;
 
         IRenderer GetSelectStatement<ISS>(ISS selectStatement)
             where ISS : ISelectStatement;

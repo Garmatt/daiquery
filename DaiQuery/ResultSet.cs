@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DaiQuery
+﻿namespace DaiQuery
 {
     public class ResultSet : Set, IResultSet
     {
         private eJoinType joinType;
         private IRenderableEntity leftMember, rightMember;
-        private IPredicate condition;
+        private Predicate condition;
 
         public ISet LeftMember
         {
@@ -22,7 +16,7 @@ namespace DaiQuery
             get { return (ISet)rightMember; }
             set { rightMember = (IRenderableEntity)value; }
         }
-        public IPredicate Condition
+        public Predicate Condition
         {
             get { return condition; }
             set { condition = value; }
@@ -39,7 +33,7 @@ namespace DaiQuery
             this.joinType = joinType;
         }
 
-        internal ResultSet(eJoinType joinType, ISet leftMember, ISet rightMember, IPredicate condition)
+        internal ResultSet(eJoinType joinType, ISet leftMember, ISet rightMember, Predicate condition)
             : this(joinType)
         {
             LeftMember = leftMember;

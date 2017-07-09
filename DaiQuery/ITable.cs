@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DaiQuery
+﻿namespace DaiQuery
 {
-    internal interface ITable : IIdentified, IAliasableEntity, IClauseBody, ISet
+    /// <summary>
+    /// Represents a database table or view.
+    /// </summary>
+    internal interface ITable : IIdentifiedEntity, IAliasableEntity, IClauseBody, ISet
     {
     }
 }

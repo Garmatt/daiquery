@@ -2,19 +2,16 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DaiQuery
 {
     /// <summary>
-    /// Abstract implementation of <see cref="IRenderer{IR}"/>.
+    /// Renders an <see cref="IRenderableEntity"/> object into SQL code.
     /// </summary>
     /// <typeparam name="IR">The type of the object to be rendered.</typeparam>
     internal abstract class Renderer<IR> : IRenderer<IR>
         where IR : IRenderableEntity
     {
-
         protected readonly IR renderable;
 
         protected Renderer(IR renderable) 
@@ -40,8 +37,7 @@ namespace DaiQuery
 
         protected string RenderKeyword(string keyword)
         {
-            eKeywordCase keywordCase = Settings.Manager.KeywordCase;
-            switch (keywordCase)
+            switch (Settings.Manager.KeywordCase)
             {
                 case eKeywordCase.UPPERCASE:
                     return keyword.ToUpper();
@@ -50,10 +46,15 @@ namespace DaiQuery
                 case eKeywordCase.PROPERCASE:
                     return CultureInfo.InvariantCulture.TextInfo.ToTitleCase(keyword.ToLower());
                 default:
-                    throw new NotSupportedException();
+                    throw new NotImplementedException("This letter case has not been implemented yet.");
             }
         }
 
+        /// <summary>
+        /// Returns the concatenation of n times the tab symbol, where n = <paramref name="indentation"/>.
+        /// </summary>
+        /// <param name="indentation"></param>
+        /// <returns></returns>
         protected string GetTabs(int indentation)
         {
             return JoinStrings(string.Empty, Enumerable.Repeat<string>(Strings.Symbols.Tab, indentation));
@@ -92,6 +93,11 @@ namespace DaiQuery
             return rendered;
         }
 
+        /// <summary>
+        /// Generates and returns the most appropriate set of rendering options for the <see cref="Renderable"/> object, taking into account the value of <paramref name="useIndentation"/> and possibly the state of the <see cref="Renderer"/> itself.
+        /// </summary>
+        /// <param name="useIndentation"></param>
+        /// <returns></returns>
         protected internal virtual eRenderOptions GetRenderOptions(bool useIndentation)
         {
             return useIndentation ? eRenderOptions.USE_INDENTATION : eRenderOptions.NONE;
@@ -107,6 +113,9 @@ namespace DaiQuery
             return Render(MustRenderIndentedByDefault);
         }
 
+        /// <summary>
+        /// The <see cref="IRenderableEntity"/> object associated with this <see cref="Renderer"/>.
+        /// </summary>
         public IR Renderable
         {
             get { return renderable; }

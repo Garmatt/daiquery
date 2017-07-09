@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DaiQuery
 {
-    public interface ISet : ITaggable
+    public interface ISet : ITaggableEntity
     {
         ResultSet InnerJoin(ISet set, IPredicate condition);
     }

@@ -44,9 +44,9 @@ namespace DaiQuery
         }
 
         public virtual IRenderer GetIdentifiedRenderer<II>(II identified)
-            where II : IIdentified
+            where II : IIdentifiedEntity
         {
-            return new IdentifiedRenderer<II>(identified);
+            return new IdentifiedEntityRenderer<II>(identified);
         }
 
         public virtual IRenderer GetSelectStatement<ISS>(ISS selectStatement) 

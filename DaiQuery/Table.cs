@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DaiQuery
+﻿namespace DaiQuery
 {
+    /// <summary>
+    /// Represents a database table or view.
+    /// </summary>
     public sealed class Table : Set, ITable
     {
         public string Identifier { get; set; }
         public Schema Schema;
 
-        internal new IAliasableRenderer Renderer
+        internal new IAliasableEntityRenderer Renderer
         {
-            get { return (IAliasableRenderer)base.Renderer; }
+            get { return (IAliasableEntityRenderer)base.Renderer; }
         }
 
         public Table(string identifier)
@@ -33,7 +30,7 @@ namespace DaiQuery
             return RendererFactory.GetTableRenderer<Table>(this);
         }
 
-        IIdentified IIdentified.Parent
+        IIdentifiedEntity IIdentifiedEntity.Parent
         {
             get { return Schema; }
         }

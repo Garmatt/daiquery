@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DaiQuery
+﻿namespace DaiQuery
 {
-    internal class TableRenderer<IT> : IdentifiedRenderer<IT>, IAliasableEntityRenderer<IT>
+    internal class TableRenderer<IT> : IdentifiedEntityRenderer<IT>, IAliasableEntityRenderer<IT>
         where IT : ITable
     {
         internal TableRenderer(IT table)

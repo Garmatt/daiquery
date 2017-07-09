@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DaiQuery
 {
+    /// <summary>
+    /// Specifies various rendering options, which can be combined using the bitwise OR operator.
+    /// </summary>
     [Flags]
     internal enum eRenderOptions
     {

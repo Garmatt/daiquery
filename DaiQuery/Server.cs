@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DaiQuery
+﻿namespace DaiQuery
 {
-    public sealed class Server : RenderableEntity, IIdentified
+    /// <summary>
+    /// Represents a SQL server.
+    /// </summary>
+    public sealed class Server : LanguageElement, IIdentifiedEntity
     {
         public string Identifier { get; set; }
 
@@ -20,7 +17,7 @@ namespace DaiQuery
             return RendererFactory.GetIdentifiedRenderer<Server>(this);
         }
 
-        IIdentified IIdentified.Parent
+        IIdentifiedEntity IIdentifiedEntity.Parent
         {
             get { return null; }
         }

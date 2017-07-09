@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DaiQuery
+﻿namespace DaiQuery
 {
     /// <summary>
-    /// A setting that dictates how the SQL code will be rendered. 
+    /// Specifies the format for rendered SQL code. 
     /// </summary>
     internal enum eRenderMode
     {
@@ -16,7 +10,7 @@ namespace DaiQuery
         /// </summary>
         INLINE,
         /// <summary>
-        /// The code will be rendered with carriage returns and tabs for the sake of readability.
+        /// The code will be rendered with carriage returns and tabs.
         /// </summary>
         INDENTED
     }

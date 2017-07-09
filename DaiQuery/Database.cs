@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace DaiQuery
 {
-    public sealed class Database : RenderableEntity, IIdentified
+    /// <summary>
+    /// Represents a SQL database.
+    /// </summary>
+    public sealed class Database : LanguageElement, IIdentifiedEntity
     {
         public string Identifier { get; set; }
         public Server Server;
@@ -28,7 +31,7 @@ namespace DaiQuery
             return RendererFactory.GetIdentifiedRenderer<Database>(this);
         }
         
-        IIdentified IIdentified.Parent
+        IIdentifiedEntity IIdentifiedEntity.Parent
         {
             get { return Server; }
         }
