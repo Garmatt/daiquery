@@ -2,16 +2,16 @@
 {
     public sealed class WhereClause : Clause, IWhereClause
     {
-        private IPredicate _predicate;
-        IPredicate IWhereClause.predicate
+        private Predicate _predicate;
+        //IPredicate IWhereClause.predicate
+        //{
+        //    get { return _predicate; }
+        //}
+
+        public Predicate Predicate
         {
             get { return _predicate; }
-        }
-
-        public IPredicate Predicate
-        {
-            get { return (IPredicate)_predicate; }
-            set { _predicate = (IPredicate)value; }
+            set { _predicate = value; }
         }
 
         public WhereClause()
@@ -20,7 +20,7 @@
 
         internal override bool IsEmpty()
         {
-            return _predicate == null || _predicate.IsEmpty;
+            return _predicate == null || ((IPredicate)_predicate).IsEmpty;
         }
 
         internal override IRenderer GetRenderer()

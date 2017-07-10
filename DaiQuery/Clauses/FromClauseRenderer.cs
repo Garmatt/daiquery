@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DaiQuery
+﻿namespace DaiQuery
 {
     internal class FromClauseRenderer<IFC> : ClauseRenderer<IFC>
         where IFC : IFromClause
@@ -15,12 +9,12 @@ namespace DaiQuery
 
         protected override string RenderBodyInline()
         {
-            return Renderable.source.RenderInline();
+            return ((ISet)Renderable.Source).RenderInline();
         }
 
         protected override string RenderBodyIndented(int indentation)
         {
-            return Renderable.source.RenderIndented(indentation);
+            return ((ISet)Renderable.Source).RenderIndented(indentation);
         }
     }
 }

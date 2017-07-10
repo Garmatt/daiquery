@@ -49,5 +49,10 @@
         {
             get { return false; }
         }
+
+        protected override bool IsEmpty()
+        {
+            return string.IsNullOrWhiteSpace(Identifier);
+        }
     }
 }

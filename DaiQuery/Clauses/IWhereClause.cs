@@ -2,7 +2,7 @@
 {
     internal interface IWhereClause : IClause
     {
-        IPredicate predicate { get; }
+        //IPredicate predicate { get; }
         Predicate Predicate { get; set; }
     }
 }

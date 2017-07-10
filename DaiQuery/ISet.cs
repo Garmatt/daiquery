@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DaiQuery
+﻿namespace DaiQuery
 {
-    public interface ISet : ITaggableEntity
+    internal interface ISet : IClauseBody
     {
-        ResultSet InnerJoin(ISet set, IPredicate condition);
+        ResultSet InnerJoin(Set set, Predicate condition);
     }
 }

@@ -1,23 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DaiQuery
+﻿namespace DaiQuery
 {
     public sealed class FromClause : Clause, IFromClause
     {
-        private IClauseBody _source;
-        IClauseBody IFromClause.source
+        private Set _source;
+        //IClauseBody IFromClause.source
+        //{
+        //    get { return _source; }
+        //}
+
+        public Set Source
         {
             get { return _source; }
-        }
-
-        public ISet Source
-        {
-            get { return (ISet)_source; }
-            set { _source = (IClauseBody)value; }
+            set { _source = value; }
         }
 
         public FromClause()
@@ -26,7 +20,7 @@ namespace DaiQuery
 
         internal override bool IsEmpty()
         {
-            return _source == null || _source.IsEmpty;
+            return _source == null || ((ISet)_source).IsEmpty;
         }
 
         internal override IRenderer GetRenderer()

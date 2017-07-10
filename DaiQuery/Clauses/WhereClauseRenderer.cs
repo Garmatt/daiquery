@@ -9,12 +9,12 @@
 
         protected override string RenderBodyInline()
         {
-            return Renderable.predicate.RenderInline();
+            return ((IPredicate)Renderable.Predicate).RenderInline();
         }
 
         protected override string RenderBodyIndented(int indentation)
         {
-            return Renderable.predicate.RenderIndented(indentation);
+            return ((IPredicate)Renderable.Predicate).RenderIndented(indentation);
         }
     }
 }

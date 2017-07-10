@@ -3,18 +3,18 @@
     public class ResultSet : Set, IResultSet
     {
         private eJoinType joinType;
-        private IRenderableEntity leftMember, rightMember;
+        private Set leftMember, rightMember;
         private Predicate condition;
 
-        public ISet LeftMember
+        public Set LeftMember
         {
-            get { return (ISet)leftMember; }
-            set { leftMember = (IRenderableEntity)value; }
+            get { return leftMember; }
+            set { leftMember = value; }
         }
-        public ISet RightMember
+        public Set RightMember
         {
-            get { return (ISet)rightMember; }
-            set { rightMember = (IRenderableEntity)value; }
+            get { return rightMember; }
+            set { rightMember = value; }
         }
         public Predicate Condition
         {
@@ -22,10 +22,10 @@
             set { condition = value; }
         }
 
-        bool IClauseBody.IsEmpty
-        {
-            get { return LeftMember == null || RightMember == null; }
-        }
+        //bool IClauseBody.IsEmpty
+        //{
+        //    get { return LeftMember == null || RightMember == null; }
+        //}
 
         internal ResultSet(eJoinType joinType)
             : base()
@@ -33,7 +33,7 @@
             this.joinType = joinType;
         }
 
-        internal ResultSet(eJoinType joinType, ISet leftMember, ISet rightMember, Predicate condition)
+        internal ResultSet(eJoinType joinType, Set leftMember, Set rightMember, Predicate condition)
             : this(joinType)
         {
             LeftMember = leftMember;
@@ -46,19 +46,24 @@
             get { return joinType; }
         }
 
-        IRenderableEntity IResultSet.LeftMember
-        {
-            get { return leftMember; }
-        }
+        //IRenderableEntity IResultSet.LeftMember
+        //{
+        //    get { return leftMember; }
+        //}
 
-        IRenderableEntity IResultSet.RightMember
-        {
-            get { return rightMember; }
-        }
+        //IRenderableEntity IResultSet.RightMember
+        //{
+        //    get { return rightMember; }
+        //}
 
         internal override IRenderer GetRenderer()
         {
             return RendererFactory.GetResultSetRenderer<ResultSet>(this);
+        }
+
+        protected override bool IsEmpty()
+        {
+            return (LeftMember == null || ((ISet)LeftMember).IsEmpty) || (RightMember == null || ((ISet)RightMember).IsEmpty);
         }
     }
 }

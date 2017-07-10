@@ -2,6 +2,6 @@
 {
     public interface ITaggableEntity
     {
-        TagCollection TagCollection { get; }
+        TagCollection Tags { get; }
     }
 }
