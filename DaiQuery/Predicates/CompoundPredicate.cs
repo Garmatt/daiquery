@@ -8,8 +8,8 @@ namespace DaiQuery
 {
     public class CompoundPredicate : Predicate, ICompoundPredicate
     {
-        private eLogicalConnective logicalConnective;
-        eLogicalConnective ICompoundPredicate.LogicalConnective
+        private LogicalConnective logicalConnective;
+        LogicalConnective ICompoundPredicate.LogicalConnective
         {
             get { return logicalConnective; }
         }
@@ -20,7 +20,7 @@ namespace DaiQuery
             get { return predicates.Cast<IPredicate>(); }
         }
 
-        public CompoundPredicate(eLogicalConnective logicalConnective)
+        public CompoundPredicate(LogicalConnective logicalConnective)
             : base()
         {
             predicates = new List<Predicate>();

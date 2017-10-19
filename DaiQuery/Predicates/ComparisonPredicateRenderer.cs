@@ -20,21 +20,21 @@ namespace DaiQuery
             : base(comparisonPredicate)
         { }
 
-        protected string RenderOperator(eComparisonOperator comparisonOperator)
+        protected string RenderOperator(ComparisonOperator comparisonOperator)
         {
             switch (comparisonOperator)
             {
-                case eComparisonOperator.EQUAL:
+                case ComparisonOperator.Equal:
                     return OP_EQUAL;
-                case eComparisonOperator.NOT_EQUAL:
+                case ComparisonOperator.NotEqual:
                     return OP_NOT_EQUAL;
-                case eComparisonOperator.GREATER:
+                case ComparisonOperator.Greater:
                     return OP_GREATER;
-                case eComparisonOperator.LESS:
+                case ComparisonOperator.Less:
                     return OP_LESS;
-                case eComparisonOperator.GREATER_OR_EQUAL:
+                case ComparisonOperator.GreaterOrEqual:
                     return OP_GREATER_EQUAL;
-                case eComparisonOperator.LESS_OR_EQUAL:
+                case ComparisonOperator.LessOrEqual:
                     return OP_LESS_EQUAL;
                 default:
                     throw new NotSupportedException();

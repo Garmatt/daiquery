@@ -16,15 +16,15 @@ namespace DaiQuery
             : base(compoundPredicate)
         { }
 
-        private string RenderLogicalConnective(eLogicalConnective logicalConnective)
+        private string RenderLogicalConnective(LogicalConnective logicalConnective)
         {
             string result = null;
             switch (logicalConnective)
             {
-                case eLogicalConnective.AND:
+                case LogicalConnective.And:
                     result = KWD_AND;
                     break;
-                case eLogicalConnective.OR:
+                case LogicalConnective.Or:
                     result = KWD_OR;
                     break;
                 default:

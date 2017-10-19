@@ -5,7 +5,7 @@
     /// </summary>
     internal interface IRenderableEntity
     {
-        string Render(bool useIndentation);
+        string Render(bool pretty);
         string Render();
         string RenderPlain();
         string RenderPretty(int indentation);

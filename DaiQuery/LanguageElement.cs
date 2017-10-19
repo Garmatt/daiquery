@@ -26,9 +26,9 @@ namespace DaiQuery
 
         internal abstract IRenderer GetRenderer();
 
-        public string Render(bool useIndentation)
+        public string Render(bool pretty)
         {
-            return renderer.Render(useIndentation);
+            return renderer.Render(pretty);
         }
 
         public string Render()

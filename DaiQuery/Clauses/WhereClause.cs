@@ -28,9 +28,9 @@
             return RendererFactory.GetWhereClauseRenderer<WhereClause>(this);
         }
 
-        internal override eClauseKeyword InitKeyword()
+        internal override ClauseKeyword InitKeyword()
         {
-            return eClauseKeyword.WHERE;
+            return ClauseKeyword.Where;
         }
     }
 }

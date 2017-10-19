@@ -62,22 +62,22 @@
 
         public static ArithmeticExpression operator +(Expression x, Expression y)
         {
-            return new ArithmeticExpression(eArithmeticOperator.PLUS, x, y);
+            return new ArithmeticExpression(ArithmeticOperator.Plus, x, y);
         }
 
         public static ArithmeticExpression operator -(Expression x, Expression y)
         {
-            return new ArithmeticExpression(eArithmeticOperator.MINUS, x, y);
+            return new ArithmeticExpression(ArithmeticOperator.Minus, x, y);
         }
 
         public static ArithmeticExpression operator *(Expression x, Expression y)
         {
-            return new ArithmeticExpression(eArithmeticOperator.TIMES, x, y);
+            return new ArithmeticExpression(ArithmeticOperator.Times, x, y);
         }
 
         public static ArithmeticExpression operator /(Expression x, Expression y)
         {
-            return new ArithmeticExpression(eArithmeticOperator.DIVIDE, x, y);
+            return new ArithmeticExpression(ArithmeticOperator.Divide, x, y);
         }
 
         internal override abstract IRenderer GetRenderer();

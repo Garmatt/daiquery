@@ -13,17 +13,17 @@ namespace DaiQuery
             : base(arithmeticExpression)
         { }
         
-        protected string RenderOperator(eArithmeticOperator arithmeticOperator)
+        protected string RenderOperator(ArithmeticOperator arithmeticOperator)
         {
             switch (arithmeticOperator)
             {
-                case eArithmeticOperator.MINUS:
+                case ArithmeticOperator.Minus:
                     return Strings.Math.MINUS;
-                case eArithmeticOperator.PLUS:
+                case ArithmeticOperator.Plus:
                     return Strings.Math.PLUS;
-                case eArithmeticOperator.TIMES:
+                case ArithmeticOperator.Times:
                     return Strings.Math.TIMES;
-                case eArithmeticOperator.DIVIDE:
+                case ArithmeticOperator.Divide:
                     return Strings.Math.DIVIDE;
                 default:
                     throw new NotSupportedException();
@@ -38,10 +38,10 @@ namespace DaiQuery
             return result;
         }
 
-        protected internal override eRenderOptions GetRenderOptions(bool useIndentation)
+        protected internal override RenderOptions GetRenderOptions(bool useIndentation)
         {
-            eRenderOptions baseOptions = base.GetRenderOptions(useIndentation);
-            return Renderable.ConsiderAsOperand ? baseOptions | eRenderOptions.ENCLOSE_IN_ROUND_BRACKETS : baseOptions;
+            RenderOptions baseOptions = base.GetRenderOptions(useIndentation);
+            return Renderable.ConsiderAsOperand ? baseOptions | RenderOptions.EncloseInRoundBrackets : baseOptions;
         }
 
         protected internal override string RenderFlatRegardlessOfInversed()

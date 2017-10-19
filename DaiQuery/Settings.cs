@@ -21,10 +21,10 @@ namespace DaiQuery
             { }
         }
 
-        private eRenderMode? defaultRenderMode;
-        private eKeywordCase? keywordCase;
+        private RenderMode? defaultRenderMode;
+        private KeywordCase? keywordCase;
         private IRendererFactory rendererFactory;
-        private eErrorHandlingMode? errorHandlingMode;
+        private ErrorHandlingMode? errorHandlingMode;
 
         #region Implementation of the singleton pattern
         private static Settings settingsMgr;
@@ -77,14 +77,14 @@ namespace DaiQuery
             return result;
         }
 
-        public eErrorHandlingMode ErrorHandlingMode
+        public ErrorHandlingMode ErrorHandlingMode
         {
             get
             {
                 if (!errorHandlingMode.HasValue)
-                    errorHandlingMode = ReadSettingValue<eErrorHandlingMode>("ErrorHandlingMode", eErrorHandlingMode.THROW_EXCEPTION,
-                        new Case<eErrorHandlingMode>("ThrowException", eErrorHandlingMode.THROW_EXCEPTION),
-                        new Case<eErrorHandlingMode>("PrintComment", eErrorHandlingMode.PRINT_COMMENT));
+                    errorHandlingMode = ReadSettingValue<ErrorHandlingMode>("ErrorHandlingMode", ErrorHandlingMode.ThrowException,
+                        new Case<ErrorHandlingMode>("ThrowException", ErrorHandlingMode.ThrowException),
+                        new Case<ErrorHandlingMode>("PrintComment", ErrorHandlingMode.PrintWarning));
 
                 return errorHandlingMode.Value; 
             }
@@ -103,28 +103,28 @@ namespace DaiQuery
             }
         }
 
-        public eRenderMode DefaultRenderMode
+        public RenderMode DefaultRenderMode
         {
             get 
             {
                 if (!defaultRenderMode.HasValue)
-                    defaultRenderMode = ReadSettingValue<eRenderMode>("DefaultRenderMode", eRenderMode.INDENTED,
-                        new Case<eRenderMode>("Inline", eRenderMode.INLINE),
-                        new Case<eRenderMode>("Indented", eRenderMode.INDENTED));
+                    defaultRenderMode = ReadSettingValue<RenderMode>("DefaultRenderMode", RenderMode.Pretty,
+                        new Case<RenderMode>("Inline", RenderMode.Plain),
+                        new Case<RenderMode>("Indented", RenderMode.Pretty));
 
                 return defaultRenderMode.Value;
             }
         }
 
-        public eKeywordCase KeywordCase
+        public KeywordCase KeywordCase
         {
             get
             {
                 if (!keywordCase.HasValue)
-                    keywordCase = ReadSettingValue<eKeywordCase>("KeywordCase", eKeywordCase.UPPERCASE,
-                        new Case<eKeywordCase>("LowerCase", eKeywordCase.LOWERCASE),
-                        new Case<eKeywordCase>("ProperCase", eKeywordCase.PROPERCASE),
-                        new Case<eKeywordCase>("UpperCase", eKeywordCase.UPPERCASE));
+                    keywordCase = ReadSettingValue<KeywordCase>("KeywordCase", KeywordCase.UpperCase,
+                        new Case<KeywordCase>("LowerCase", KeywordCase.LowerCase),
+                        new Case<KeywordCase>("ProperCase", KeywordCase.ProperCase),
+                        new Case<KeywordCase>("UpperCase", KeywordCase.UpperCase));
                 
                 return keywordCase.Value;
             }

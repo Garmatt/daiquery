@@ -28,9 +28,9 @@
             return RendererFactory.GetFromClauseRenderer<FromClause>(this);
         }
 
-        internal override eClauseKeyword InitKeyword()
+        internal override ClauseKeyword InitKeyword()
         {
-            return eClauseKeyword.FROM;
+            return ClauseKeyword.From;
         }
     }
 }

@@ -2,24 +2,24 @@
 {
     public class ComparisonPredicate : Predicate, IComparisonPredicate
     {
-        private readonly eComparisonOperator comparisonOperator;
+        private readonly ComparisonOperator comparisonOperator;
         public Expression LeftMember; 
         public Expression RightMember; 
 
-        public ComparisonPredicate(eComparisonOperator comparisonOperator)
+        public ComparisonPredicate(ComparisonOperator comparisonOperator)
             : base()
         {
             this.comparisonOperator = comparisonOperator;
         }
 
-        public ComparisonPredicate(eComparisonOperator comparisonOperator, Expression leftMember, Expression rightMember)
+        public ComparisonPredicate(Expression leftMember, ComparisonOperator comparisonOperator, Expression rightMember)
             : this(comparisonOperator)
         {
             LeftMember = leftMember;
             RightMember = rightMember;
         }
 
-        public eComparisonOperator Operator
+        public ComparisonOperator Operator
         {
             get { return comparisonOperator; }
         }
@@ -46,7 +46,7 @@
 
         internal override Predicate GetClone()
         {
-            return new ComparisonPredicate(Operator, LeftMember.GetClone(), RightMember.GetClone());
+            return new ComparisonPredicate(LeftMember.GetClone(), Operator, RightMember.GetClone());
         }
     }
 }

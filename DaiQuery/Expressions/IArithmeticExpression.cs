@@ -7,6 +7,6 @@
     {
         IExpression FirstOperand { get; }
         IExpression SecondOperand { get; } 
-        eArithmeticOperator Operator { get; }
+        ArithmeticOperator Operator { get; }
     }
 }

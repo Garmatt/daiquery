@@ -9,18 +9,18 @@ namespace DaiQuery
     internal abstract class ClauseRenderer<IC> : Renderer<IC>
         where IC : IClause
     {
-        private string RenderClauseKeyword(eClauseKeyword clauseKeyword)
+        private string RenderClauseKeyword(ClauseKeyword clauseKeyword)
         {
             string keywordAsString = null;
             switch (clauseKeyword)
             {
-                case eClauseKeyword.FROM:
+                case ClauseKeyword.From:
                     keywordAsString = Strings.Keywords.FROM;
                     break;
-                case eClauseKeyword.WHERE:
+                case ClauseKeyword.Where:
                     keywordAsString = Strings.Keywords.WHERE;
                     break;
-                case eClauseKeyword.SELECT:
+                case ClauseKeyword.Select:
                     keywordAsString = Strings.Keywords.SELECT;
                     break;
                 default:

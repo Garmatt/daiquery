@@ -8,7 +8,7 @@
 
         public ResultSet InnerJoin(Set set, Predicate condition)
         {
-            return new ResultSet(eJoinType.INNER_JOIN, this, set, condition);
+            return new ResultSet(JoinType.InnerJoin, this, set, condition);
         }
 
         //public IResultSet InnerJoin(ISet set, string alias, IPredicate condition)

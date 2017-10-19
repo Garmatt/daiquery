@@ -5,17 +5,17 @@
     /// </summary>
     public sealed class ArithmeticExpression : Expression, IArithmeticExpression
     {
-        private readonly eArithmeticOperator arithmeticOperator;
+        private readonly ArithmeticOperator arithmeticOperator;
         public Expression FirstOperand; 
         public Expression SecondOperand; 
 
-        public ArithmeticExpression(eArithmeticOperator arithmeticOperator)
+        public ArithmeticExpression(ArithmeticOperator arithmeticOperator)
             : base()
         {
             this.arithmeticOperator = arithmeticOperator;
         }
 
-        public ArithmeticExpression(eArithmeticOperator arithmeticOperator, Expression firstOperand, Expression secondOperand)
+        public ArithmeticExpression(ArithmeticOperator arithmeticOperator, Expression firstOperand, Expression secondOperand)
             : this(arithmeticOperator)
         {
             FirstOperand = firstOperand;
@@ -32,7 +32,7 @@
             return new ArithmeticExpression(this.arithmeticOperator, this.FirstOperand.GetClone(), this.SecondOperand.GetClone());
         }
 
-        public eArithmeticOperator Operator
+        public ArithmeticOperator Operator
         {
             get { return arithmeticOperator; }
         }

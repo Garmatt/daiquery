@@ -2,7 +2,7 @@
 {
     public class ResultSet : Set, IResultSet
     {
-        private eJoinType joinType;
+        private JoinType joinType;
         private Set leftMember, rightMember;
         private Predicate condition;
 
@@ -27,13 +27,13 @@
         //    get { return LeftMember == null || RightMember == null; }
         //}
 
-        internal ResultSet(eJoinType joinType)
+        internal ResultSet(JoinType joinType)
             : base()
         {
             this.joinType = joinType;
         }
 
-        internal ResultSet(eJoinType joinType, Set leftMember, Set rightMember, Predicate condition)
+        internal ResultSet(JoinType joinType, Set leftMember, Set rightMember, Predicate condition)
             : this(joinType)
         {
             LeftMember = leftMember;
@@ -41,7 +41,7 @@
             Condition = condition;
         }
 
-        eJoinType IResultSet.JoinType
+        JoinType IResultSet.JoinType
         {
             get { return joinType; }
         }

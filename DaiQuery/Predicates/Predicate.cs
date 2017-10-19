@@ -16,14 +16,14 @@
 
         public static CompoundPredicate operator &(Predicate a, Predicate b)
         {
-            CompoundPredicate result = new CompoundPredicate(eLogicalConnective.AND);
+            CompoundPredicate result = new CompoundPredicate(LogicalConnective.And);
             result.AppendPredicates(a, b);
             return result;
         }
 
         public static CompoundPredicate operator |(Predicate a, Predicate b)
         {
-            CompoundPredicate result = new CompoundPredicate(eLogicalConnective.OR);
+            CompoundPredicate result = new CompoundPredicate(LogicalConnective.Or);
             result.AppendPredicates(a, b);
             return result;
         }

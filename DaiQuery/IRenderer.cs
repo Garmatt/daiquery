@@ -5,8 +5,8 @@
     /// </summary>
     internal interface IRenderer
     {
-        string Render(eRenderOptions renderOptions);
-        string Render(bool useIndentation);
+        string Render(RenderOptions renderOptions);
+        string Render(bool pretty);
         string Render();
         string RenderPlain();
         string RenderPretty(int indentation);

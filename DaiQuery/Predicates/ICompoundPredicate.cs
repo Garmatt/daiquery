@@ -4,7 +4,7 @@ namespace DaiQuery
 {
     internal interface ICompoundPredicate : IPredicate
     {
-        eLogicalConnective LogicalConnective { get; }
+        LogicalConnective LogicalConnective { get; }
         IEnumerable<IPredicate> Predicates { get; }
     }
 }

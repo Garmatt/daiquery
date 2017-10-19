@@ -9,24 +9,41 @@ namespace DaiQueryTests
         SelectStatement selectStatement;
         Table testTable;
 
-        [SetUp]
-        public void Initialize()
+        [OneTimeSetUp]
+        public void OneTimeSetUp()
         {
-            selectStatement = new SelectStatement();
             testTable = new Table("TestTable");
         }
 
+        [SetUp]
+        public void SetUp()
+        {
+            selectStatement = new SelectStatement();
+        }
+        
         [TearDown]
-        public void Cleanup()
+        public void TearDown()
+        {
+            selectStatement = null;
+        }
+
+        [OneTimeTearDown]
+        public void OneTimeTearDown()
         {
             testTable = null;
-            selectStatement = null;
         }
 
         [Test]
         public void SelectEmpty()
         {
-            Assert.AreEqual(";", selectStatement.Render(false));
+            Assert.AreEqual(string.Empty, selectStatement.Render(false));
+        }
+
+        [Test]
+        public void SelectConstantUnicodeString()
+        {
+            selectStatement.Select(new ConstantUnicodeString("test", true));
+            Assert.AreEqual("SELECT N'test';", selectStatement.Render(false));
         }
 
         [Test]
@@ -34,6 +51,13 @@ namespace DaiQueryTests
         {
             selectStatement.SelectClause.Add(new ConstantUnicodeString("test", true), "TestAlias");
             Assert.AreEqual("SELECT N'test' AS TestAlias;", selectStatement.Render(false));
+        }
+
+        [Test]
+        public void SelectColumn()
+        {
+            selectStatement.Select(new Column("TestColumn", testTable)).From(testTable);
+            Assert.AreEqual("SELECT [TestTable].[TestColumn] AS Test FROM [TestTable];", selectStatement.Render(false));
         }
 
         [Test]
@@ -50,8 +74,8 @@ namespace DaiQueryTests
             selectStatement.FromClause.Source = testTable;
             selectStatement.SelectClause.Add(new Column("TestColumn", testTable), "Test");
             selectStatement.WhereClause.Predicate = new ComparisonPredicate(
-                eComparisonOperator.EQUAL, 
-                new Column("FilterColumn", testTable), 
+                new Column("FilterColumn", testTable),
+                ComparisonOperator.Equal,
                 new ConstantString("TEST_VALUE", false));
             Assert.AreEqual("SELECT [TestTable].[TestColumn] AS Test FROM [TestTable] WHERE [TestTable].[FilterColumn] = 'TEST_VALUE';", selectStatement.Render(false));
         }

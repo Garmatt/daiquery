@@ -47,9 +47,9 @@ namespace DaiQuery
             return aliasedExpressions == null || !aliasedExpressions.Any();
         }
 
-        internal override eClauseKeyword InitKeyword()
+        internal override ClauseKeyword InitKeyword()
         {
-            return eClauseKeyword.SELECT;
+            return ClauseKeyword.Select;
         }
 
         internal override IRenderer GetRenderer()

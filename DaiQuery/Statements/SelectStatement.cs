@@ -43,6 +43,14 @@ namespace DaiQuery
             return this;
         }
 
+        public SelectStatement From(Set source)
+        {
+            FromClause newFromClause = new FromClause();
+            newFromClause.Source = source;
+            FromClause = newFromClause;
+            return this;
+        }
+
         internal override IRenderer GetRenderer()
         {
             return new SelectStatementRenderer<SelectStatement>(this);

@@ -39,11 +39,11 @@ namespace DaiQuery
         {
             switch (Settings.Manager.KeywordCase)
             {
-                case eKeywordCase.UPPERCASE:
+                case KeywordCase.UpperCase:
                     return keyword.ToUpper();
-                case eKeywordCase.LOWERCASE:
+                case KeywordCase.LowerCase:
                     return keyword.ToLower();
-                case eKeywordCase.PROPERCASE:
+                case KeywordCase.ProperCase:
                     return CultureInfo.InvariantCulture.TextInfo.ToTitleCase(keyword.ToLower());
                 default:
                     throw new NotImplementedException("This letter case has not been implemented yet.");
@@ -62,17 +62,17 @@ namespace DaiQuery
 
         private bool MustRenderIndentedByDefault
         {
-            get { return Settings.Manager.DefaultRenderMode == eRenderMode.INDENTED; }
+            get { return Settings.Manager.DefaultRenderMode == RenderMode.Pretty; }
         }
 
-        private bool MustIndent(eRenderOptions renderOptions)
+        private bool MustIndent(RenderOptions renderOptions)
         {
-            return (eRenderOptions.USE_INDENTATION & renderOptions) != 0;
+            return (RenderOptions.UseIndentation & renderOptions) != 0;
         }
 
-        private bool MustEncloseInRoundBrackets(eRenderOptions renderOptions)
+        private bool MustEncloseInRoundBrackets(RenderOptions renderOptions)
         {
-            return (eRenderOptions.ENCLOSE_IN_ROUND_BRACKETS & renderOptions) != 0;
+            return (RenderOptions.EncloseInRoundBrackets & renderOptions) != 0;
         }
 
         public abstract string RenderPlain();
@@ -84,7 +84,7 @@ namespace DaiQuery
             return useIndentation ? RenderPretty(indentationSeed) : RenderPlain();
         }
 
-        public string Render(eRenderOptions renderOptions)
+        public string Render(RenderOptions renderOptions)
         {
             string rendered = RenderWithoutBrackets(MustIndent(renderOptions));
             if (MustEncloseInRoundBrackets(renderOptions))
@@ -98,9 +98,9 @@ namespace DaiQuery
         /// </summary>
         /// <param name="useIndentation"></param>
         /// <returns></returns>
-        protected internal virtual eRenderOptions GetRenderOptions(bool useIndentation)
+        protected internal virtual RenderOptions GetRenderOptions(bool useIndentation)
         {
-            return useIndentation ? eRenderOptions.USE_INDENTATION : eRenderOptions.NONE;
+            return useIndentation ? RenderOptions.UseIndentation : RenderOptions.None;
         }
 
         public string Render(bool useIndentation)
