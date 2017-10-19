@@ -7,14 +7,14 @@
             : base(whereClause)
         { }
 
-        protected override string RenderBodyInline()
+        protected override string RenderBodyPlain()
         {
-            return ((IPredicate)Renderable.Predicate).RenderInline();
+            return ((IPredicate)Renderable.Predicate).RenderPlain();
         }
 
-        protected override string RenderBodyIndented(int indentation)
+        protected override string RenderBodyPretty(int indentation)
         {
-            return ((IPredicate)Renderable.Predicate).RenderIndented(indentation);
+            return ((IPredicate)Renderable.Predicate).RenderPretty(indentation);
         }
     }
 }

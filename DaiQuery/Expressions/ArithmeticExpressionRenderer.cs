@@ -33,7 +33,7 @@ namespace DaiQuery
         private string RenderAsOperand(IExpression expression)
         {
             expression.ConsiderAsOperand = true;
-            string result = expression.RenderInline();
+            string result = expression.RenderPlain();
             expression.ConsiderAsOperand = false;
             return result;
         }

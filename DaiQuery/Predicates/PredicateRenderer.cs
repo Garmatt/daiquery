@@ -7,8 +7,8 @@
             : base(predicate)
         { }
 
-        public override abstract string RenderInline();
+        public override abstract string RenderPlain();
 
-        public override abstract string RenderIndented(int indentation);
+        public override abstract string RenderPretty(int indentation);
     }
 }

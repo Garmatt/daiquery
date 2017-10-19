@@ -10,7 +10,7 @@ namespace DaiQuery
             : base(identified)
         { }
 
-        public override string RenderInline()
+        public override string RenderPlain()
         {
             string identifier = Renderable.Identifier;
             if (string.IsNullOrWhiteSpace(identifier))
@@ -18,15 +18,15 @@ namespace DaiQuery
 
             StringBuilder sb = new StringBuilder();
             if (Renderable.Parent != null)
-                sb.Append(Renderable.Parent.RenderInline()).Append(Strings.Symbols.Period);
+                sb.Append(Renderable.Parent.RenderPlain()).Append(Strings.Symbols.Period);
 
             sb.Append(Strings.Symbols.OpenDelimiter).Append(identifier).Append(Strings.Symbols.ClosedDelimiter);
             return sb.ToString();
         }
 
-        public override string RenderIndented(int indentation)
+        public override string RenderPretty(int indentation)
         {
-            return GetTabs(indentation) + RenderInline();
+            return GetTabs(indentation) + RenderPlain();
         }
     }
 }

@@ -13,12 +13,12 @@ namespace DaiQuery
             : base(resultSet)
         { }
 
-        public override string RenderInline()
+        public override string RenderPlain()
         {
             throw new NotImplementedException();
         }
 
-        public override string RenderIndented(int indentation)
+        public override string RenderPretty(int indentation)
         {
             throw new NotImplementedException();
         }

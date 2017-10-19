@@ -33,14 +33,14 @@ namespace DaiQuery
             return RenderKeyword(result);
         }
 
-        public override string RenderInline()
+        public override string RenderPlain()
         {
-            return JoinStrings(Strings.Symbols.WhiteSpace + RenderLogicalConnective(Renderable.LogicalConnective) + Strings.Symbols.WhiteSpace, Renderable.Predicates.Select(p => p.RenderInline()));
+            return JoinStrings(Strings.Symbols.WhiteSpace + RenderLogicalConnective(Renderable.LogicalConnective) + Strings.Symbols.WhiteSpace, Renderable.Predicates.Select(p => p.RenderPlain()));
         }
 
-        public override string RenderIndented(int indentation)
+        public override string RenderPretty(int indentation)
         {
-            return JoinStrings(Strings.Symbols.WhiteSpace + RenderLogicalConnective(Renderable.LogicalConnective) + Strings.Symbols.CarriageReturn, Renderable.Predicates.Select(p => p.RenderIndented(indentation)));
+            return JoinStrings(Strings.Symbols.WhiteSpace + RenderLogicalConnective(Renderable.LogicalConnective) + Strings.Symbols.CarriageReturn, Renderable.Predicates.Select(p => p.RenderPretty(indentation)));
         }
     }
 }

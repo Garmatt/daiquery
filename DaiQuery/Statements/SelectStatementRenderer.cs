@@ -7,31 +7,31 @@
             : base(selectStatement)
         { }
 
-        private string RenderClauseFlat(IClause clause)
+        private string RenderClausePlain(IClause clause)
         {
-            return clause != null && !clause.IsEmpty ? clause.RenderInline() : string.Empty;
+            return clause != null && !clause.IsEmpty ? clause.RenderPlain() : string.Empty;
         }
 
-        private string RenderClauseIndented(IClause clause, int indentation)
+        private string RenderClausePretty(IClause clause, int indentation)
         {
-            return clause != null && !clause.IsEmpty ? clause.RenderIndented(indentation) : string.Empty;
+            return clause != null && !clause.IsEmpty ? clause.RenderPretty(indentation) : string.Empty;
         }
 
-        public override string RenderInline()
+        public override string RenderPlain()
         {
             return JoinStrings(Strings.Symbols.WhiteSpace, 
-                RenderClauseFlat(Renderable.SelectClause),
-                RenderClauseFlat(Renderable.FromClause),
-                RenderClauseFlat(Renderable.WhereClause))
+                RenderClausePlain(Renderable.SelectClause),
+                RenderClausePlain(Renderable.FromClause),
+                RenderClausePlain(Renderable.WhereClause))
                 + Strings.Symbols.Semicolon;
         }
 
-        public override string RenderIndented(int indentation)
+        public override string RenderPretty(int indentation)
         {
             return JoinStrings(Strings.Symbols.CarriageReturn,
-                RenderClauseIndented(Renderable.SelectClause, indentation),
-                RenderClauseIndented(Renderable.FromClause, indentation),
-                RenderClauseIndented(Renderable.WhereClause, indentation))
+                RenderClausePretty(Renderable.SelectClause, indentation),
+                RenderClausePretty(Renderable.FromClause, indentation),
+                RenderClausePretty(Renderable.WhereClause, indentation))
                 + Strings.Symbols.Semicolon;
         }
     }

@@ -46,14 +46,14 @@ namespace DaiQuery
             get { throw new NotImplementedException(); }
         }
 
-        string IRenderableEntity.RenderInline()
+        string IRenderableEntity.RenderPlain()
         {
-            return renderer.RenderInline();
+            return renderer.RenderPlain();
         }
 
-        string IRenderableEntity.RenderIndented(int indentation)
+        string IRenderableEntity.RenderPretty(int indentation)
         {
-            return renderer.RenderIndented(indentation);
+            return renderer.RenderPretty(indentation);
         }
     }
 }

@@ -22,7 +22,7 @@ namespace DaiQuery
 
             StringBuilder sb = new StringBuilder();
             if (Renderable.Parent != null)
-                sb.Append(Renderable.Parent.RenderInline()).Append(Strings.Symbols.Period);
+                sb.Append(Renderable.Parent.RenderPlain()).Append(Strings.Symbols.Period);
 
             sb.Append(Strings.Symbols.OpenDelimiter).Append(identifier).Append(Strings.Symbols.ClosedDelimiter);
             return sb.ToString();

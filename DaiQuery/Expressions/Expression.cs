@@ -87,12 +87,12 @@
             return GetClone();
         }
 
-        string IAliasableEntity.RenderInlineWithAlias(string alias)
+        string IAliasableEntity.RenderPlainWithAlias(string alias)
         {
             return Renderer.RenderInlineWithAlias(alias);
         }
 
-        string IAliasableEntity.RenderIndentedWithAlias(int indentation, string alias)
+        string IAliasableEntity.RenderPrettyWithAlias(int indentation, string alias)
         {
             return Renderer.RenderIndentedWithAlias(indentation, alias);
         }

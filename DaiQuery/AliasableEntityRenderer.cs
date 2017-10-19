@@ -13,16 +13,16 @@
 
         public virtual string RenderInlineWithAlias(string alias)
         {
-            return JoinStrings(Strings.Symbols.WhiteSpace, RenderInline(), RenderKeyword(Strings.Keywords.AS), alias); 
+            return JoinStrings(Strings.Symbols.WhiteSpace, RenderPlain(), RenderKeyword(Strings.Keywords.AS), alias); 
         }
 
         public virtual string RenderIndentedWithAlias(int indentation, string alias)
         {
-            return JoinStrings(Strings.Symbols.WhiteSpace, RenderIndented(indentation), RenderKeyword(Strings.Keywords.AS), alias); 
+            return JoinStrings(Strings.Symbols.WhiteSpace, RenderPretty(indentation), RenderKeyword(Strings.Keywords.AS), alias); 
         }
 
-        public override abstract string RenderInline();
+        public override abstract string RenderPlain();
 
-        public override abstract string RenderIndented(int indentation);
+        public override abstract string RenderPretty(int indentation);
     }
 }

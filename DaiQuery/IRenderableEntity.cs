@@ -7,7 +7,7 @@
     {
         string Render(bool useIndentation);
         string Render();
-        string RenderInline();
-        string RenderIndented(int indentation);
+        string RenderPlain();
+        string RenderPretty(int indentation);
     }
 }

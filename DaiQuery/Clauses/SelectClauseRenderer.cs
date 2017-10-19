@@ -29,18 +29,18 @@ namespace DaiQuery
                         throw new Exception(); //TODO: there is already a field with the same header
 
                 yield return expressionHasAlias ? (
-                    useIndentation ? kvp.Key.RenderIndentedWithAlias(indentation + 1, kvp.Value) : kvp.Key.RenderInlineWithAlias(kvp.Value)
+                    useIndentation ? kvp.Key.RenderPrettyWithAlias(indentation + 1, kvp.Value) : kvp.Key.RenderPlainWithAlias(kvp.Value)
                     ) : (
-                    useIndentation ? kvp.Key.RenderIndented(indentation + 1) : kvp.Key.RenderInline());
+                    useIndentation ? kvp.Key.RenderPretty(indentation + 1) : kvp.Key.RenderPlain());
             }
         }
 
-        protected override string RenderBodyInline()
+        protected override string RenderBodyPlain()
         {
             return JoinStrings(Strings.Symbols.Comma + Strings.Symbols.WhiteSpace, RenderExpressions(false));
         }
 
-        protected override string RenderBodyIndented(int indentation)
+        protected override string RenderBodyPretty(int indentation)
         {
             this.indentation = indentation;
             string tabs = GetTabs(indentation);

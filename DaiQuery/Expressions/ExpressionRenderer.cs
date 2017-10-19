@@ -13,7 +13,7 @@
 
         protected internal abstract string RenderFlatRegardlessOfInversed();
 
-        public override string RenderInline()
+        public override string RenderPlain()
         {
             string result = RenderFlatRegardlessOfInversed();
             if (!string.IsNullOrWhiteSpace(result) && Renderable.IsInversed)
@@ -22,9 +22,9 @@
             return result;
         }
 
-        public override string RenderIndented(int indentation)
+        public override string RenderPretty(int indentation)
         {
-            return JoinStrings(string.Empty, GetTabs(indentation), RenderInline());
+            return JoinStrings(string.Empty, GetTabs(indentation), RenderPlain());
         }
     }
 }

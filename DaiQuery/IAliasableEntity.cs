@@ -5,7 +5,7 @@
     /// </summary>
     internal interface IAliasableEntity : IRenderableEntity
     {
-        string RenderInlineWithAlias(string alias);
-        string RenderIndentedWithAlias(int indentation, string alias);
+        string RenderPlainWithAlias(string alias);
+        string RenderPrettyWithAlias(int indentation, string alias);
     }
 }

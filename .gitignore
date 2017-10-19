@@ -15,3 +15,6 @@
 /DaiQueryTests/obj/Debug/DaiQueryTests.csproj.FileListAbsolute.txt
 /DaiQueryTests/bin/Debug/nunit.framework.xml
 /DaiQueryTests/obj/Debug/build.force
+/DaiQuery/bin/Debug
+*.tmp
+*.tmp

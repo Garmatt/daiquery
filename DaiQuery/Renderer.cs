@@ -75,13 +75,13 @@ namespace DaiQuery
             return (eRenderOptions.ENCLOSE_IN_ROUND_BRACKETS & renderOptions) != 0;
         }
 
-        public abstract string RenderInline();
-        public abstract string RenderIndented(int indentation);
+        public abstract string RenderPlain();
+        public abstract string RenderPretty(int indentation);
 
         private string RenderWithoutBrackets(bool useIndentation)
         {
             int indentationSeed = 0;
-            return useIndentation ? RenderIndented(indentationSeed) : RenderInline();
+            return useIndentation ? RenderPretty(indentationSeed) : RenderPlain();
         }
 
         public string Render(eRenderOptions renderOptions)

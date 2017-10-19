@@ -41,17 +41,17 @@ namespace DaiQuery
             }
         }
 
-        public override string RenderInline()
+        public override string RenderPlain()
         {
             return JoinStrings(Strings.Symbols.WhiteSpace, 
-                Renderable.LeftMember.RenderInline(), 
+                Renderable.LeftMember.RenderPlain(), 
                 RenderOperator(Renderable.Operator), 
-                Renderable.RightMember.RenderInline());
+                Renderable.RightMember.RenderPlain());
         }
 
-        public override string RenderIndented(int indentation)
+        public override string RenderPretty(int indentation)
         {
-            return JoinStrings(string.Empty, GetTabs(indentation), RenderInline());
+            return JoinStrings(string.Empty, GetTabs(indentation), RenderPlain());
         }
     }
 }
