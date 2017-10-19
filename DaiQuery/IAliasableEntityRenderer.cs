@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DaiQuery
+﻿namespace DaiQuery
 {
     /// <summary>
     /// Extends <see cref="IRenderer"/> providing methods for appending an alias to the rendered entity.

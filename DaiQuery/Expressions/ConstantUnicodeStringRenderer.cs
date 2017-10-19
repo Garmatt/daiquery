@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DaiQuery
+﻿namespace DaiQuery
 {
     internal class ConstantUnicodeStringRenderer<ICS> : ConstantStringRenderer<ICS>
         where ICS : IConstantString

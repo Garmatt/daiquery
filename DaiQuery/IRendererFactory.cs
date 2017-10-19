@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DaiQuery
+﻿namespace DaiQuery
 {
     /// <summary>
     /// Exposes a collection of factory methods that each return a dedicated <see cref="IRenderer"/> object for an <see cref="IRenderableEntity"/> object.
