@@ -1,43 +1,42 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using DaiQuery;
+﻿using DaiQuery;
+using NUnit.Framework;
 
 namespace DaiQueryTests
 {
-    [TestClass]
+    [TestFixture]
     public class SelectStatement_RenderingTests
     {
         SelectStatement selectStatement;
         Table testTable;
 
-        [TestInitialize]
+        [SetUp]
         public void Initialize()
         {
             selectStatement = new SelectStatement();
             testTable = new Table("TestTable");
         }
 
-        [TestCleanup]
+        [TearDown]
         public void Cleanup()
         {
             testTable = null;
             selectStatement = null;
         }
 
-        [TestMethod]
+        [Test]
         public void SelectEmpty()
         {
             Assert.AreEqual(";", selectStatement.Render(false));
         }
 
-        [TestMethod]
+        [Test]
         public void SelectConstantUnicodeStringWithAlias()
         {
             selectStatement.SelectClause.Add(new ConstantUnicodeString("test", true), "TestAlias");
             Assert.AreEqual("SELECT N'test' AS TestAlias;", selectStatement.Render(false));
         }
 
-        [TestMethod]
+        [Test]
         public void SelectColumnWithAlias()
         {
             selectStatement.FromClause.Source = testTable;
@@ -45,7 +44,7 @@ namespace DaiQueryTests
             Assert.AreEqual("SELECT [TestTable].[TestColumn] AS Test FROM [TestTable];", selectStatement.Render(false));
         }
 
-        [TestMethod]
+        [Test]
         public void SelectColumnWithAlias_WithFilter()
         {
             selectStatement.FromClause.Source = testTable;
@@ -57,11 +56,10 @@ namespace DaiQueryTests
             Assert.AreEqual("SELECT [TestTable].[TestColumn] AS Test FROM [TestTable] WHERE [TestTable].[FilterColumn] = 'TEST_VALUE';", selectStatement.Render(false));
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
+        [Test]
         public void SelectColumnWithNullAlias()
         {
-            selectStatement.SelectClause.Add(new Column("TestColumn", new Table("TestTable")), null);
+            Assert.That(() => selectStatement.SelectClause.Add(new Column("TestColumn", new Table("TestTable")), (string)null), Throws.ArgumentException);
         }
     }
 }

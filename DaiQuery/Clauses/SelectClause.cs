@@ -1,32 +1,50 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DaiQuery
 {
     public sealed class SelectClause : Clause, ISelectClause
     {
-        private readonly Dictionary<IExpression, string> aliasedFields;
+        private readonly Dictionary<IExpression, string> aliasedExpressions;
 
         public SelectClause()
             : base()
         {
-            aliasedFields = new Dictionary<IExpression, string>();
+            aliasedExpressions = new Dictionary<IExpression, string>();
         }
 
-        public void Add(Expression expression, string alias)
+        public SelectClause Add(Expression expressionToSelect, string expressionAlias)
         {
-            if (string.IsNullOrWhiteSpace(alias))
+            if (string.IsNullOrWhiteSpace(expressionAlias))
                 throw new ArgumentException("The alias must be a non-null, non-empty string.", "alias");
 
-            aliasedFields.Add(expression, alias);
+            aliasedExpressions.Add(expressionToSelect, expressionAlias);
+            return this;
+        }
+
+        public SelectClause Add(params Expression[] expressionsToSelect)
+        {
+            return Add((IEnumerable<Expression>)expressionsToSelect);
+        }
+
+        public SelectClause Add(IEnumerable<Expression> expressionsToSelect)
+        {
+            foreach (Expression expressionToSelect in expressionsToSelect)
+                Add(expressionToSelect, (string)null);
+
+            return this;
+        }
+
+        public SelectClause Clear()
+        {
+            aliasedExpressions.Clear();
+            return this;
         }
 
         internal override bool IsEmpty()
         {
-            return aliasedFields == null || !aliasedFields.Any();
+            return aliasedExpressions == null || !aliasedExpressions.Any();
         }
 
         internal override eClauseKeyword InitKeyword()
@@ -39,9 +57,9 @@ namespace DaiQuery
             return RendererFactory.GetSelectClauseRenderer<SelectClause>(this);
         }
 
-        IEnumerable<KeyValuePair<IExpression, string>> ISelectClause.AliasedFields
+        IEnumerable<KeyValuePair<IExpression, string>> ISelectClause.AliasedExpressions
         {
-            get { return aliasedFields; }
+            get { return aliasedExpressions; }
         }
     }
 }

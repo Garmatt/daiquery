@@ -1,57 +1,46 @@
-﻿namespace DaiQuery
+﻿using System.Collections.Generic;
+
+namespace DaiQuery
 {
     public sealed class SelectStatement : LanguageElement, ISelectStatement
     {
-        private SelectClause selectClause;
         public SelectClause SelectClause
         {
-            get 
-            {
-                return selectClause; 
-            }
-            set
-            {
-                selectClause = value;
-            }
+            get;
+            set;
         }
-
-        private FromClause fromClause;
+        
         public FromClause FromClause
         {
-            get
-            {
-                return fromClause;
-            }
-            set
-            {
-                fromClause = value;
-            }
+            get;
+            set;
         }
-
-        private WhereClause whereClause;
+        
         public WhereClause WhereClause
         {
-            get
-            {
-                return whereClause;
-            }
-            set
-            {
-                whereClause = value;
-            }
+            get;
+            set;
         }
 
         public SelectStatement()
             : base()
         {
-            Initialize();
+            SelectClause = new SelectClause();
+            FromClause = new FromClause();
+            WhereClause = new WhereClause();
         }
 
-        private void Initialize()
+        public SelectStatement Select(params Expression[] expressionsToSelect)
         {
-            selectClause = new SelectClause();
-            fromClause = new FromClause();
-            whereClause = new WhereClause();
+            return Select((IEnumerable<Expression>)expressionsToSelect);
+        }
+
+        public SelectStatement Select(IEnumerable<Expression> expressionsToSelect)
+        {
+            SelectClause newSelectClause = new SelectClause();
+            newSelectClause.Add(expressionsToSelect);
+            SelectClause = newSelectClause;
+            return this;
         }
 
         internal override IRenderer GetRenderer()

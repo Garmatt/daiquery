@@ -1,7 +1,7 @@
 ﻿namespace DaiQuery
 {
     /// <summary>
-    /// A constituent component of statements and queries, made of a keyword followed by a body.
+    /// A constituent component of statements and queries, consisting of a keyword followed by a body.
     /// </summary>
     public abstract class Clause : LanguageElement, IClause
     {

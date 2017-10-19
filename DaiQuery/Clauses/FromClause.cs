@@ -2,7 +2,7 @@
 {
     public sealed class FromClause : Clause, IFromClause
     {
-        private Set _source;
+        //private Set _source;
         //IClauseBody IFromClause.source
         //{
         //    get { return _source; }
@@ -10,8 +10,8 @@
 
         public Set Source
         {
-            get { return _source; }
-            set { _source = value; }
+            get; //{ return _source; }
+            set; //{ _source = value; }
         }
 
         public FromClause()
@@ -20,7 +20,7 @@
 
         internal override bool IsEmpty()
         {
-            return _source == null || ((ISet)_source).IsEmpty;
+            return Source == null || ((ISet)Source).IsEmpty;
         }
 
         internal override IRenderer GetRenderer()
