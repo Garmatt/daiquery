@@ -1,6 +1,6 @@
 ﻿namespace DaiQuery
 {
-    internal interface ISelectStatement : IRenderableEntity
+    internal interface ISelectStatement : IStatement
     {
         IFromClause FromClause { get; }
         IWhereClause WhereClause { get; }

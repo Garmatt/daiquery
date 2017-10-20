@@ -53,7 +53,7 @@ namespace DaiQuery
 
         internal override IRenderer GetRenderer()
         {
-            return new SelectStatementRenderer<SelectStatement>(this);
+            return RendererFactory.GetStatementRenderer<SelectStatement>(this);
         }
 
         IWhereClause ISelectStatement.WhereClause
@@ -69,6 +69,11 @@ namespace DaiQuery
         IFromClause ISelectStatement.FromClause
         {
             get { return FromClause; }
+        }
+
+        List<IClause> IStatement.StatementStructure
+        {
+            get { return new List<IClause> { SelectClause, FromClause, WhereClause }; }
         }
     }
 }

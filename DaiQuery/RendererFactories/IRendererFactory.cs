@@ -23,8 +23,8 @@
         IRenderer GetIdentifiedRenderer<II>(II identified)
             where II : IIdentifiedEntity;
 
-        IRenderer GetSelectStatement<ISS>(ISS selectStatement)
-            where ISS : ISelectStatement;
+        IRenderer GetStatementRenderer<IS>(IS statement)
+            where IS : IStatement;
 
         IRenderer GetSelectClauseRenderer<ISC>(ISC selectClause)
             where ISC : ISelectClause;

@@ -97,6 +97,7 @@
     <Compile Include="RenderableEntities\IRenderer.cs" />
     <Compile Include="RendererFactories\IRendererFactory.cs" />
     <Compile Include="Clauses\SelectClause\ISelectClause.cs" />
+    <Compile Include="Statements\IStatement.cs" />
     <Compile Include="Statements\SelectStatement\ISelectStatement.cs" />
     <Compile Include="Sets\Tables\ITable.cs" />
     <Compile Include="Tags\ITaggableEntity.cs" />
@@ -117,11 +118,10 @@
     <Compile Include="Clauses\SelectClause\SelectClause.cs" />
     <Compile Include="Clauses\SelectClause\SelectClauseRenderer.cs" />
     <Compile Include="Statements\SelectStatement\SelectStatement.cs" />
-    <Compile Include="Statements\SelectStatement\SelectStatementRenderer.cs" />
+    <Compile Include="Statements\SelectStatement\StatementRenderer.cs" />
     <Compile Include="RenderableEntities\IdentifiedEntities\Server.cs" />
     <Compile Include="Options\Settings.cs" />
     <Compile Include="RendererFactories\StandardRendererFactory.cs" />
-    <Compile Include="Statements\Statement.cs" />
     <Compile Include="Sets\Tables\Table.cs" />
     <Compile Include="Tags\TagCollection.cs" />
     <Compile Include="Clauses\WhereClause\WhereClause.cs" />

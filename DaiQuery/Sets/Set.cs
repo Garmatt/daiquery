@@ -8,7 +8,7 @@
 
         public JoinSet InnerJoin(Set set, Predicate condition)
         {
-            return new JoinSet(JoinType.InnerJoin, this, set, condition);
+            return new JoinSet(this, JoinType.InnerJoin, set, condition);
         }
 
         internal override abstract IRenderer GetRenderer();

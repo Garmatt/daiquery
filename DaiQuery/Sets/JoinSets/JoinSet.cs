@@ -2,10 +2,10 @@
 {
     public class JoinSet : Set, IJoinSet
     {
-        private JoinType joinType;
-        JoinType IJoinSet.JoinType
+        public JoinType JoinType
         {
-            get { return joinType; }
+            get;
+            set;
         }
 
         public Set LeftMember
@@ -24,17 +24,17 @@
             set;
         }
         
-        internal JoinSet(JoinType joinType)
+        internal JoinSet(Set leftMember, JoinType joinType, Set rightMember)
             : base()
         {
-            this.joinType = joinType;
-        }
-
-        internal JoinSet(JoinType joinType, Set leftMember, Set rightMember, Predicate condition)
-            : this(joinType)
-        {
+            JoinType = joinType;
             LeftMember = leftMember;
             RightMember = rightMember;
+        }
+
+        internal JoinSet(Set leftMember, JoinType joinType, Set rightMember, Predicate condition)
+            : this(leftMember, joinType, rightMember)
+        {
             Condition = condition;
         }
 

@@ -43,10 +43,10 @@
             return new IdentifiedEntityRenderer<II>(identified);
         }
 
-        public virtual IRenderer GetSelectStatement<ISS>(ISS selectStatement) 
-            where ISS : ISelectStatement
+        public virtual IRenderer GetStatementRenderer<IS>(IS statement) 
+            where IS : IStatement
         {
-            return new SelectStatementRenderer<ISS>(selectStatement);
+            return new StatementRenderer<IS>(statement);
         }
 
         public virtual IRenderer GetSelectClauseRenderer<ISC>(ISC selectClause) 
