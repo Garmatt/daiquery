@@ -17,7 +17,7 @@
         {
             string result = RenderFlatRegardlessOfInversed();
             if (!string.IsNullOrWhiteSpace(result) && Renderable.IsInversed)
-                result = JoinStrings(string.Empty, Strings.Math.MINUS, Strings.Symbols.OpenRoundBracket, result, Strings.Symbols.ClosedRoundBracket);
+                result = JoinStrings(string.Empty, Strings.Math.Minus, Strings.Symbols.OpenRoundBracket, result, Strings.Symbols.ClosedRoundBracket);
 
             return result;
         }

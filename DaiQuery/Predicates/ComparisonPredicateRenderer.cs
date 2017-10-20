@@ -5,13 +5,6 @@ namespace DaiQuery
     internal class ComparisonPredicateRenderer<ICP> : PredicateRenderer<ICP>
         where ICP : IComparisonPredicate
     {
-        protected const string OP_EQUAL = "=";
-        protected const string OP_NOT_EQUAL = "<>";
-        protected const string OP_GREATER = ">";
-        protected const string OP_LESS = "<";
-        protected const string OP_GREATER_EQUAL = ">=";
-        protected const string OP_LESS_EQUAL = "=";
-
         internal ComparisonPredicateRenderer(ICP comparisonPredicate)
             : base(comparisonPredicate)
         { }
@@ -21,17 +14,17 @@ namespace DaiQuery
             switch (comparisonOperator)
             {
                 case ComparisonOperator.Equal:
-                    return OP_EQUAL;
+                    return Strings.Operators.Equal;
                 case ComparisonOperator.NotEqual:
-                    return OP_NOT_EQUAL;
+                    return Strings.Operators.NotEqual;
                 case ComparisonOperator.Greater:
-                    return OP_GREATER;
+                    return Strings.Operators.Greater;
                 case ComparisonOperator.Less:
-                    return OP_LESS;
+                    return Strings.Operators.Less;
                 case ComparisonOperator.GreaterOrEqual:
-                    return OP_GREATER_EQUAL;
+                    return Strings.Operators.GreaterEqual;
                 case ComparisonOperator.LessOrEqual:
-                    return OP_LESS_EQUAL;
+                    return Strings.Operators.LessEqual;
                 default:
                     throw new NotSupportedException();
             }

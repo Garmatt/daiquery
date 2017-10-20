@@ -6,9 +6,6 @@ namespace DaiQuery
     internal class CompoundPredicateRenderer<ICP> : PredicateRenderer<ICP>
         where ICP : ICompoundPredicate
     {
-        protected const string KWD_AND = "AND";
-        protected const string KWD_OR = "OR";
-
         internal CompoundPredicateRenderer(ICP compoundPredicate)
             : base(compoundPredicate)
         { }
@@ -19,10 +16,10 @@ namespace DaiQuery
             switch (logicalConnective)
             {
                 case LogicalConnective.And:
-                    result = KWD_AND;
+                    result = Strings.Keywords.And;
                     break;
                 case LogicalConnective.Or:
-                    result = KWD_OR;
+                    result = Strings.Keywords.Or;
                     break;
                 default:
                     throw new NotSupportedException();

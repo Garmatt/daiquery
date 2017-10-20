@@ -18,13 +18,13 @@ namespace DaiQuery
             switch (arithmeticOperator)
             {
                 case ArithmeticOperator.Minus:
-                    return Strings.Math.MINUS;
+                    return Strings.Math.Minus;
                 case ArithmeticOperator.Plus:
-                    return Strings.Math.PLUS;
+                    return Strings.Math.Plus;
                 case ArithmeticOperator.Times:
-                    return Strings.Math.TIMES;
+                    return Strings.Math.Times;
                 case ArithmeticOperator.Divide:
-                    return Strings.Math.DIVIDE;
+                    return Strings.Math.Divide;
                 default:
                     throw new NotSupportedException();
             }

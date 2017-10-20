@@ -15,13 +15,13 @@ namespace DaiQuery
             switch (clauseKeyword)
             {
                 case ClauseKeyword.From:
-                    keywordAsString = Strings.Keywords.FROM;
+                    keywordAsString = Strings.Keywords.From;
                     break;
                 case ClauseKeyword.Where:
-                    keywordAsString = Strings.Keywords.WHERE;
+                    keywordAsString = Strings.Keywords.Where;
                     break;
                 case ClauseKeyword.Select:
-                    keywordAsString = Strings.Keywords.SELECT;
+                    keywordAsString = Strings.Keywords.Select;
                     break;
                 default:
                     throw new NotImplementedException();
