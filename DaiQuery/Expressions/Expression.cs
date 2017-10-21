@@ -62,22 +62,22 @@
 
         public static ArithmeticExpression operator +(Expression x, Expression y)
         {
-            return new ArithmeticExpression(eArithmeticOperator.PLUS, x, y);
+            return new ArithmeticExpression(ArithmeticOperator.Plus, x, y);
         }
 
         public static ArithmeticExpression operator -(Expression x, Expression y)
         {
-            return new ArithmeticExpression(eArithmeticOperator.MINUS, x, y);
+            return new ArithmeticExpression(ArithmeticOperator.Minus, x, y);
         }
 
         public static ArithmeticExpression operator *(Expression x, Expression y)
         {
-            return new ArithmeticExpression(eArithmeticOperator.TIMES, x, y);
+            return new ArithmeticExpression(ArithmeticOperator.Times, x, y);
         }
 
         public static ArithmeticExpression operator /(Expression x, Expression y)
         {
-            return new ArithmeticExpression(eArithmeticOperator.DIVIDE, x, y);
+            return new ArithmeticExpression(ArithmeticOperator.Divide, x, y);
         }
 
         internal override abstract IRenderer GetRenderer();
@@ -87,12 +87,12 @@
             return GetClone();
         }
 
-        string IAliasableEntity.RenderInlineWithAlias(string alias)
+        string IAliasableEntity.RenderPlainWithAlias(string alias)
         {
             return Renderer.RenderInlineWithAlias(alias);
         }
 
-        string IAliasableEntity.RenderIndentedWithAlias(int indentation, string alias)
+        string IAliasableEntity.RenderPrettyWithAlias(int indentation, string alias)
         {
             return Renderer.RenderIndentedWithAlias(indentation, alias);
         }

@@ -5,7 +5,7 @@
     /// </summary>
     internal interface IClause : IRenderableEntity
     {
-        eClauseKeyword Keyword { get; }
+        ClauseKeyword Keyword { get; }
 
         /// <summary>
         /// True if the body of the clause is empty, false otherwise.

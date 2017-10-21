@@ -1,12 +1,12 @@
 ﻿namespace DaiQuery
 {
     /// <summary>
-    /// A constituent component of statements and queries, made of a keyword followed by a body.
+    /// A constituent component of statements and queries, consisting of a keyword followed by a body.
     /// </summary>
     public abstract class Clause : LanguageElement, IClause
     {
-        private readonly eClauseKeyword keyword;
-        eClauseKeyword IClause.Keyword
+        private readonly ClauseKeyword keyword;
+        ClauseKeyword IClause.Keyword
         {
             get { return keyword; }
         }
@@ -26,7 +26,7 @@
         /// Defines the specific keyword that characterizes a concrete instance of a <see cref="Clause"/>.
         /// </summary>
         /// <returns></returns>
-        internal abstract eClauseKeyword InitKeyword();
+        internal abstract ClauseKeyword InitKeyword();
 
         internal abstract bool IsEmpty();
 

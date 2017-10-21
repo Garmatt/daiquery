@@ -9,19 +9,19 @@ namespace DaiQuery
     internal abstract class ClauseRenderer<IC> : Renderer<IC>
         where IC : IClause
     {
-        private string RenderClauseKeyword(eClauseKeyword clauseKeyword)
+        private string RenderClauseKeyword(ClauseKeyword clauseKeyword)
         {
             string keywordAsString = null;
             switch (clauseKeyword)
             {
-                case eClauseKeyword.FROM:
-                    keywordAsString = Strings.Keywords.FROM;
+                case ClauseKeyword.From:
+                    keywordAsString = Strings.Keywords.From;
                     break;
-                case eClauseKeyword.WHERE:
-                    keywordAsString = Strings.Keywords.WHERE;
+                case ClauseKeyword.Where:
+                    keywordAsString = Strings.Keywords.Where;
                     break;
-                case eClauseKeyword.SELECT:
-                    keywordAsString = Strings.Keywords.SELECT;
+                case ClauseKeyword.Select:
+                    keywordAsString = Strings.Keywords.Select;
                     break;
                 default:
                     throw new NotImplementedException();
@@ -33,17 +33,17 @@ namespace DaiQuery
             : base(clause)
         { }
 
-        protected abstract string RenderBodyInline();
-        protected abstract string RenderBodyIndented(int indentation);
+        protected abstract string RenderBodyPlain();
+        protected abstract string RenderBodyPretty(int indentation);
 
-        public override string RenderInline()
+        public override string RenderPlain()
         {
-            return JoinStrings(Strings.Symbols.WhiteSpace, RenderClauseKeyword(Renderable.Keyword), RenderBodyInline());
+            return JoinStrings(Strings.Symbols.WhiteSpace, RenderClauseKeyword(Renderable.Keyword), RenderBodyPlain());
         }
 
-        public override string RenderIndented(int indentation)
+        public override string RenderPretty(int indentation)
         {
-            return JoinStrings(Strings.Symbols.CarriageReturn, GetTabs(indentation) + RenderClauseKeyword(Renderable.Keyword), RenderBodyIndented(indentation + 1));
+            return JoinStrings(Strings.Symbols.CarriageReturn, GetTabs(indentation) + RenderClauseKeyword(Renderable.Keyword), RenderBodyPretty(indentation + 1));
         }
     }
 }
