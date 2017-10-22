@@ -14,7 +14,7 @@ namespace DaiQuery
         {
             string identifier = Renderable.Identifier;
             if (string.IsNullOrWhiteSpace(identifier))
-                throw new Exception();
+                throw new Exception(); //to do
 
             StringBuilder sb = new StringBuilder();
             if (Renderable.Parent != null)

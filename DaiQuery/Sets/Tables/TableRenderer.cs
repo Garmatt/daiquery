@@ -7,12 +7,12 @@
             : base(table)
         { }
 
-        public string RenderInlineWithAlias(string alias)
+        public string RenderPlainWithAlias(string alias)
         {
             return JoinStrings(Strings.Symbols.WhiteSpace, RenderPlain(), RenderKeyword(Strings.Keywords.As), alias);
         }
 
-        public string RenderIndentedWithAlias(int indentation, string alias)
+        public string RenderPrettyWithAlias(int indentation, string alias)
         {
             return JoinStrings(Strings.Symbols.WhiteSpace, RenderPretty(indentation), RenderKeyword(Strings.Keywords.As), alias);
         }

@@ -60,7 +60,7 @@ namespace DaiQuery
             return JoinStrings(string.Empty, Enumerable.Repeat<string>(Strings.Symbols.Tab, indentation));
         }
 
-        private bool MustRenderIndentedByDefault
+        private bool MustRenderPrettyByDefault
         {
             get { return Settings.Manager.DefaultRenderMode == RenderMode.Pretty; }
         }
@@ -110,7 +110,7 @@ namespace DaiQuery
 
         public string Render()
         {
-            return Render(MustRenderIndentedByDefault);
+            return Render(MustRenderPrettyByDefault);
         }
 
         /// <summary>

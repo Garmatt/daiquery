@@ -5,8 +5,8 @@
     /// </summary>
     internal interface IAliasableEntityRenderer : IRenderer
     {
-        string RenderInlineWithAlias(string alias);
-        string RenderIndentedWithAlias(int indentation, string alias);
+        string RenderPlainWithAlias(string alias);
+        string RenderPrettyWithAlias(int indentation, string alias);
     }
 
     /// <summary>

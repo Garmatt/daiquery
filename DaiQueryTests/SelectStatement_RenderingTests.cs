@@ -36,55 +36,58 @@ namespace DaiQueryTests
         [Test]
         public void SelectEmpty()
         {
-            Assert.AreEqual(string.Empty, selectStatement.Render(false));
+            Assert.AreEqual(string.Empty, selectStatement.Render());
         }
 
         [Test]
         public void SelectConstantUnicodeString()
         {
             selectStatement.Select(new ConstantUnicodeString("test", true));
-            Assert.AreEqual("SELECT N'test';", selectStatement.Render(false));
+            Assert.AreEqual("SELECT N'test';", selectStatement.Render());
         }
 
         [Test]
         public void SelectConstantUnicodeStringWithAlias()
         {
             selectStatement.SelectClause.Add(new ConstantUnicodeString("test", true), "TestAlias");
-            Assert.AreEqual("SELECT N'test' AS TestAlias;", selectStatement.Render(false));
+            Assert.AreEqual("SELECT N'test' AS TestAlias;", selectStatement.Render());
         }
 
         [Test]
         public void SelectColumn()
         {
-            selectStatement.Select(new Column("TestColumn")).From(testTable);
-            Assert.AreEqual("SELECT [TestColumn] FROM [TestTable];", selectStatement.Render(false));
+            selectStatement.Select("TestColumn").From(testTable);
+            Assert.AreEqual("SELECT [TestColumn] FROM [TestTable];", selectStatement.Render());
         }
 
         [Test]
         public void SelectTableColumn()
         {
             selectStatement.Select(new Column("TestColumn", testTable)).From(testTable);
-            Assert.AreEqual("SELECT [TestTable].[TestColumn] FROM [TestTable];", selectStatement.Render(false));
+            Assert.AreEqual("SELECT [TestTable].[TestColumn] FROM [TestTable];", selectStatement.Render());
         }
 
         [Test]
         public void SelectColumnWithAlias()
         {
-            selectStatement.FromClause.Source = testTable;
-            selectStatement.SelectClause.Add(new Column("TestColumn", testTable), "Test");
-            Assert.AreEqual("SELECT [TestTable].[TestColumn] AS Test FROM [TestTable];", selectStatement.Render(false));
+            selectStatement.From(testTable).SelectClause.Add(new Column("TestColumn", testTable), "Test");
+            Assert.AreEqual("SELECT [TestTable].[TestColumn] AS Test FROM [TestTable];", selectStatement.Render());
         }
 
         [Test]
         public void SelectColumnWithAlias_WithFilter()
         {
-            selectStatement.FromClause.Source = testTable;
-            selectStatement.SelectClause.Add(new Column("TestColumn", testTable), "Test");
-            selectStatement.WhereClause.Predicate = new ComparisonPredicate(
-                new Column("FilterColumn", testTable),
-                ComparisonOperator.Equal,
-                new ConstantString("TEST_VALUE", false));
-            Assert.AreEqual("SELECT [TestTable].[TestColumn] AS Test FROM [TestTable] WHERE [TestTable].[FilterColumn] = 'TEST_VALUE';", selectStatement.Render(false));
+            selectStatement.From(testTable)
+                .Where(new ComparisonPredicate( new Column("FilterColumn", testTable), ComparisonOperator.Equal, new ConstantString("TEST_VALUE", false)))
+                .SelectClause.Add(new Column("TestColumn", testTable), "Test");
+            Assert.AreEqual("SELECT [TestTable].[TestColumn] AS Test FROM [TestTable] WHERE [TestTable].[FilterColumn] = 'TEST_VALUE';", selectStatement.Render());
+        }
+
+        [Test]
+        public void SelectColumn_WithFilter()
+        {
+            selectStatement.From(testTable).Where("FilterColumn", false, "TEST_VALUE").Select("TestColumn");
+            Assert.AreEqual("SELECT [TestColumn] FROM [TestTable] WHERE [FilterColumn] <> 'TEST_VALUE';", selectStatement.Render());
         }
 
         [Test]

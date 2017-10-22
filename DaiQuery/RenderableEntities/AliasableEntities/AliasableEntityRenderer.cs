@@ -11,12 +11,12 @@
             : base(aliasable)
         { }
 
-        public virtual string RenderInlineWithAlias(string alias)
+        public virtual string RenderPlainWithAlias(string alias)
         {
             return JoinStrings(Strings.Symbols.WhiteSpace, RenderPlain(), RenderKeyword(Strings.Keywords.As), alias); 
         }
 
-        public virtual string RenderIndentedWithAlias(int indentation, string alias)
+        public virtual string RenderPrettyWithAlias(int indentation, string alias)
         {
             return JoinStrings(Strings.Symbols.WhiteSpace, RenderPretty(indentation), RenderKeyword(Strings.Keywords.As), alias); 
         }

@@ -108,9 +108,9 @@ namespace DaiQuery
             get 
             {
                 if (!defaultRenderMode.HasValue)
-                    defaultRenderMode = ReadSettingValue<RenderMode>("DefaultRenderMode", RenderMode.Pretty,
-                        new Case<RenderMode>("Inline", RenderMode.Plain),
-                        new Case<RenderMode>("Indented", RenderMode.Pretty));
+                    defaultRenderMode = ReadSettingValue<RenderMode>("DefaultRenderMode", RenderMode.Plain,
+                        new Case<RenderMode>("Plain", RenderMode.Plain),
+                        new Case<RenderMode>("Pretty", RenderMode.Pretty));
 
                 return defaultRenderMode.Value;
             }

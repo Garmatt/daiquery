@@ -37,12 +37,12 @@
 
         string IAliasableEntity.RenderPlainWithAlias(string alias)
         {
-            return Renderer.RenderInlineWithAlias(alias);
+            return Renderer.RenderPlainWithAlias(alias);
         }
 
         string IAliasableEntity.RenderPrettyWithAlias(int indentation, string alias)
         {
-            return Renderer.RenderIndentedWithAlias(indentation, alias);
+            return Renderer.RenderPrettyWithAlias(indentation, alias);
         }
 
         bool IClauseBody.IsEmpty

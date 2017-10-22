@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace DaiQuery
 {
@@ -37,6 +38,11 @@ namespace DaiQuery
             WhereClause.Clear();
         }
 
+        public SelectStatement Select(params string[] columnNames)
+        {
+            return Select(columnNames.Select(columnName => new Column(columnName)));
+        }
+
         public SelectStatement Select(params Expression[] expressionsToSelect)
         {
             return Select((IEnumerable<Expression>)expressionsToSelect);
@@ -56,6 +62,29 @@ namespace DaiQuery
             newFromClause.Source = source;
             FromClause = newFromClause;
             return this;
+        }
+
+        public SelectStatement From(string tableName)
+        {
+            return From(new Table(tableName));
+        }
+
+        public SelectStatement Where(Predicate condition)
+        {
+            WhereClause newWhereClause = new WhereClause();
+            newWhereClause.Predicate = condition;
+            WhereClause = newWhereClause;
+            return this;
+        }
+
+        //public SelectStatement Where(string columnName, ComparisonOperator comparisonOperator, int constantNumber)
+        //{
+        //    return Where(new ComparisonPredicate(new Column(columnName), comparisonOperator, new ConstantNumber(constantNumber)));
+        //}
+
+        public SelectStatement Where(string columnName, bool equals, string constantString)
+        {
+            return Where(new ComparisonPredicate(new Column(columnName), equals ? ComparisonOperator.Equal : ComparisonOperator.NotEqual, new ConstantString(constantString, false)));
         }
 
         internal override IRenderer GetRenderer()
