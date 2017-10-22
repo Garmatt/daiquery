@@ -1,6 +1,6 @@
 ﻿namespace DaiQuery
 {
-    public class JoinSet : Set, IJoinSet
+    public class JoinSet : ResultSet, IJoinSet
     {
         public JoinType JoinType
         {
@@ -8,12 +8,12 @@
             set;
         }
 
-        public Set LeftMember
+        public ResultSet LeftMember
         {
             get;
             set;
         }
-        public Set RightMember
+        public ResultSet RightMember
         {
             get;
             set;
@@ -24,7 +24,7 @@
             set;
         }
         
-        internal JoinSet(Set leftMember, JoinType joinType, Set rightMember)
+        internal JoinSet(ResultSet leftMember, JoinType joinType, ResultSet rightMember)
             : base()
         {
             JoinType = joinType;
@@ -32,7 +32,7 @@
             RightMember = rightMember;
         }
 
-        internal JoinSet(Set leftMember, JoinType joinType, Set rightMember, Predicate condition)
+        internal JoinSet(ResultSet leftMember, JoinType joinType, ResultSet rightMember, Predicate condition)
             : this(leftMember, joinType, rightMember)
         {
             Condition = condition;
@@ -45,7 +45,7 @@
 
         protected override bool IsEmpty()
         {
-            return (LeftMember == null || ((ISet)LeftMember).IsEmpty) || (RightMember == null || ((ISet)RightMember).IsEmpty);
+            return (LeftMember == null || ((IResultSet)LeftMember).IsEmpty) || (RightMember == null || ((IResultSet)RightMember).IsEmpty);
         }
     }
 }

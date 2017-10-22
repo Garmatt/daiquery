@@ -11,5 +11,7 @@
         /// True if the body of the clause is empty, false otherwise.
         /// </summary>
         bool IsEmpty { get; }
+
+        void Clear();
     }
 }

@@ -1,10 +1,10 @@
 ﻿namespace DaiQuery
 {
-    internal interface IJoinSet : ISet
+    internal interface IJoinSet : IResultSet
     {
         JoinType JoinType { get; }
-        Set LeftMember { get; }
-        Set RightMember { get; }
+        ResultSet LeftMember { get; }
+        ResultSet RightMember { get; }
         Predicate Condition { get; }
     }
 }

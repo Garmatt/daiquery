@@ -3,7 +3,7 @@
     /// <summary>
     /// Represents a database table or view.
     /// </summary>
-    public sealed class Table : Set, ITable
+    public sealed class Table : ResultSet, ITable
     {
         public string Identifier { get; set; }
         public Schema Schema;

@@ -56,8 +56,15 @@ namespace DaiQueryTests
         [Test]
         public void SelectColumn()
         {
+            selectStatement.Select(new Column("TestColumn")).From(testTable);
+            Assert.AreEqual("SELECT [TestColumn] FROM [TestTable];", selectStatement.Render(false));
+        }
+
+        [Test]
+        public void SelectTableColumn()
+        {
             selectStatement.Select(new Column("TestColumn", testTable)).From(testTable);
-            Assert.AreEqual("SELECT [TestTable].[TestColumn] AS Test FROM [TestTable];", selectStatement.Render(false));
+            Assert.AreEqual("SELECT [TestTable].[TestColumn] FROM [TestTable];", selectStatement.Render(false));
         }
 
         [Test]

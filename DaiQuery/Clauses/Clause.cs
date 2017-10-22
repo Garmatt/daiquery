@@ -31,5 +31,7 @@
         internal abstract bool IsEmpty();
 
         internal override abstract IRenderer GetRenderer();
+
+        public abstract void Clear();
     }
 }

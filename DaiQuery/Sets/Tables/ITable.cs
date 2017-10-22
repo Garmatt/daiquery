@@ -3,7 +3,7 @@
     /// <summary>
     /// Represents a database table or view.
     /// </summary>
-    internal interface ITable : IIdentifiedEntity, IAliasableEntity, IClauseBody, ISet
+    internal interface ITable : IIdentifiedEntity, IAliasableEntity, IClauseBody, IResultSet
     {
     }
 }

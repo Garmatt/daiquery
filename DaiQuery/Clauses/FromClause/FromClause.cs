@@ -1,8 +1,10 @@
-﻿namespace DaiQuery
+﻿using System;
+
+namespace DaiQuery
 {
     public sealed class FromClause : Clause, IFromClause
     {
-        public Set Source
+        public ResultSet Source
         {
             get;
             set;
@@ -14,7 +16,7 @@
 
         internal override bool IsEmpty()
         {
-            return Source == null || ((ISet)Source).IsEmpty;
+            return Source == null || ((IResultSet)Source).IsEmpty;
         }
 
         internal override IRenderer GetRenderer()
@@ -25,6 +27,11 @@
         internal override ClauseKeyword InitKeyword()
         {
             return ClauseKeyword.From;
+        }
+
+        public override void Clear()
+        {
+            Source = null;
         }
     }
 }

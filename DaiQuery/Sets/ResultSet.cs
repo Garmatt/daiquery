@@ -1,14 +1,14 @@
 ﻿namespace DaiQuery
 {
-    public abstract class Set : LanguageElement, ISet
+    public abstract class ResultSet : LanguageElement, IResultSet
     {
-        public Set()
+        public ResultSet()
             : base()
         { }
 
-        public JoinSet InnerJoin(Set set, Predicate condition)
+        public JoinSet InnerJoin(ResultSet otherSet, Predicate condition)
         {
-            return new JoinSet(this, JoinType.InnerJoin, set, condition);
+            return new JoinSet(this, JoinType.InnerJoin, otherSet, condition);
         }
 
         internal override abstract IRenderer GetRenderer();

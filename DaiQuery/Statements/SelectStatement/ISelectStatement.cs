@@ -5,5 +5,6 @@
         IFromClause FromClause { get; }
         IWhereClause WhereClause { get; }
         ISelectClause SelectClause { get; }
+        void Clear();
     }
 }

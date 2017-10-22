@@ -30,6 +30,13 @@ namespace DaiQuery
             WhereClause = new WhereClause();
         }
 
+        public void Clear()
+        {
+            SelectClause.Clear();
+            FromClause.Clear();
+            WhereClause.Clear();
+        }
+
         public SelectStatement Select(params Expression[] expressionsToSelect)
         {
             return Select((IEnumerable<Expression>)expressionsToSelect);
@@ -43,7 +50,7 @@ namespace DaiQuery
             return this;
         }
 
-        public SelectStatement From(Set source)
+        public SelectStatement From(ResultSet source)
         {
             FromClause newFromClause = new FromClause();
             newFromClause.Source = source;

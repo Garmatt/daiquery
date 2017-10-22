@@ -16,7 +16,7 @@
         bool ConsiderAsOperand { get; set; }
 
         /// <summary>
-        /// A string that identifies this expression, typically in the context of a resultset. Usually an alias or an identifier. Can be null.
+        /// A string that identifies this expression, typically in the context of a result set. Usually an alias or an identifier. Can be null.
         /// </summary>
         string Header { get; }
 

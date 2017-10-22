@@ -1,17 +1,13 @@
-﻿namespace DaiQuery
+﻿using System;
+
+namespace DaiQuery
 {
     public sealed class WhereClause : Clause, IWhereClause
     {
-        private Predicate _predicate;
-        //IPredicate IWhereClause.predicate
-        //{
-        //    get { return _predicate; }
-        //}
-
         public Predicate Predicate
         {
-            get { return _predicate; }
-            set { _predicate = value; }
+            get;
+            set;
         }
 
         public WhereClause()
@@ -20,7 +16,7 @@
 
         internal override bool IsEmpty()
         {
-            return _predicate == null || ((IPredicate)_predicate).IsEmpty;
+            return Predicate == null || ((IPredicate)Predicate).IsEmpty;
         }
 
         internal override IRenderer GetRenderer()
@@ -31,6 +27,11 @@
         internal override ClauseKeyword InitKeyword()
         {
             return ClauseKeyword.Where;
+        }
+
+        public override void Clear()
+        {
+            Predicate = null;
         }
     }
 }

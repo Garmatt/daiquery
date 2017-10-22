@@ -23,6 +23,12 @@ namespace DaiQuery
             return this;
         }
 
+        public SelectClause Add(Expression expressionToSelect)
+        {
+            aliasedExpressions.Add(expressionToSelect, (string)null);
+            return this;
+        }
+
         public SelectClause Add(params Expression[] expressionsToSelect)
         {
             return Add((IEnumerable<Expression>)expressionsToSelect);
@@ -31,15 +37,14 @@ namespace DaiQuery
         public SelectClause Add(IEnumerable<Expression> expressionsToSelect)
         {
             foreach (Expression expressionToSelect in expressionsToSelect)
-                Add(expressionToSelect, (string)null);
+                Add(expressionToSelect);
 
             return this;
         }
 
-        public SelectClause Clear()
+        public override void Clear()
         {
             aliasedExpressions.Clear();
-            return this;
         }
 
         internal override bool IsEmpty()
