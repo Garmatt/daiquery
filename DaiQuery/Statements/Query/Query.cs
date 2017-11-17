@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace DaiQuery
 {
-    public sealed class SelectStatement : LanguageElement, ISelectStatement
+    public sealed class Query : LanguageElement, IQuery
     {
         public SelectClause SelectClause
         {
@@ -23,7 +23,7 @@ namespace DaiQuery
             set;
         }
 
-        public SelectStatement()
+        public Query()
             : base()
         {
             SelectClause = new SelectClause();
@@ -38,17 +38,17 @@ namespace DaiQuery
             WhereClause.Clear();
         }
 
-        public SelectStatement Select(params string[] columnNames)
+        public Query Select(params string[] columnNames)
         {
             return Select(columnNames.Select(columnName => new Column(columnName)));
         }
 
-        //public SelectStatement Select(params Expression[] expressionsToSelect)
+        //public Query Select(params Expression[] expressionsToSelect)
         //{
         //    return Select((IEnumerable<Expression>)expressionsToSelect);
         //}
 
-        public SelectStatement Select(IEnumerable<Expression> expressionsToSelect)
+        public Query Select(IEnumerable<Expression> expressionsToSelect)
         {
             SelectClause newSelectClause = new SelectClause();
             newSelectClause.Add(expressionsToSelect);
@@ -56,7 +56,7 @@ namespace DaiQuery
             return this;
         }
 
-        public SelectStatement From(ResultSet source)
+        public Query From(ResultSet source)
         {
             FromClause newFromClause = new FromClause();
             newFromClause.Source = source;
@@ -64,12 +64,12 @@ namespace DaiQuery
             return this;
         }
 
-        public SelectStatement From(string tableName)
+        public Query From(string tableName)
         {
             return From(new Table(tableName));
         }
 
-        public SelectStatement Where(Predicate condition)
+        public Query Where(Predicate condition)
         {
             WhereClause newWhereClause = new WhereClause();
             newWhereClause.Predicate = condition;
@@ -77,32 +77,32 @@ namespace DaiQuery
             return this;
         }
 
-        //public SelectStatement Where(string columnName, ComparisonOperator comparisonOperator, int constantNumber)
+        //public Query Where(string columnName, ComparisonOperator comparisonOperator, int constantNumber)
         //{
         //    return Where(new ComparisonPredicate(new Column(columnName), comparisonOperator, new ConstantNumber(constantNumber)));
         //}
 
-        public SelectStatement Where(string columnName, bool equals, string constantString)
+        public Query Where(string columnName, bool equals, string constantString)
         {
             return Where(new ComparisonPredicate(new Column(columnName), equals ? ComparisonOperator.Equal : ComparisonOperator.NotEqual, new ConstantString(constantString, false)));
         }
 
         internal override IRenderer GetRenderer()
         {
-            return RendererFactory.GetStatementRenderer<SelectStatement>(this);
+            return RendererFactory.GetStatementRenderer<Query>(this);
         }
 
-        IWhereClause ISelectStatement.WhereClause
+        IWhereClause IQuery.WhereClause
         {
             get { return WhereClause; }
         }
 
-        ISelectClause ISelectStatement.SelectClause
+        ISelectClause IQuery.SelectClause
         {
             get { return SelectClause; }
         }
 
-        IFromClause ISelectStatement.FromClause
+        IFromClause IQuery.FromClause
         {
             get { return FromClause; }
         }

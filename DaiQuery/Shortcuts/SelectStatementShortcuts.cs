@@ -3,11 +3,11 @@
 namespace DaiQuery.Shortcuts
 {
     [EditorBrowsable(EditorBrowsableState.Never)]
-    public static class SelectStatementShortcuts
+    public static class QueryShortcuts
     {
-        public static SelectStatement Select(this SelectStatement selectStatement, params Expression[] expressionsToSelect)
+        public static Query Select(this Query Query, params Expression[] expressionsToSelect)
         {
-            return selectStatement.Select(expressionsToSelect);
+            return Query.Select(expressionsToSelect);
         }
     }
 }

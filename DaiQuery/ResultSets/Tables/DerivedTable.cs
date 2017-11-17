@@ -1,13 +1,21 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
+﻿using System;
 
-//namespace DaiQuery
-//{
-//    public sealed class DerivedTable : Component, ITable
-//    {
-//        public SelectStatement DefiningQuery { get; set; }
-//    }
-//}
+namespace DaiQuery
+{
+    public sealed class DerivedTable : ResultSet, IDerivedTable
+    {
+        public string Alias { get; set; }
+
+        public Query Query { get; set; }
+
+        protected override bool IsEmpty()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal override IRenderer GetRenderer()
+        {
+            throw new NotImplementedException();
+        }
+    }
+}

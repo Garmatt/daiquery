@@ -6,8 +6,8 @@ namespace DaiQuery
     internal class StatementRenderer<IS> : Renderer<IS>
         where IS : IStatement
     {
-        internal StatementRenderer(IS selectStatement)
-            : base(selectStatement)
+        internal StatementRenderer(IS statement)
+            : base(statement)
         { }
 
         private string RenderClausePlain(IClause clause)

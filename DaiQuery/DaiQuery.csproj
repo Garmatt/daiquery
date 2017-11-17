@@ -47,6 +47,8 @@
     <Compile Include="Clauses\ClauseRenderer.cs" />
     <Compile Include="Expressions\ColumnExpressions\Column.cs" />
     <Compile Include="Expressions\ColumnExpressions\ColumnRenderer.cs" />
+    <Compile Include="RenderableEntities\AliasedEntities\IAliasableEntity.cs" />
+    <Compile Include="ResultSets\CombinedSets\SetOperator.cs" />
     <Compile Include="ResultSets\Tables\CommonTableExpression.cs" />
     <Compile Include="Predicates\ComparisonPredicates\ComparisonPredicate.cs" />
     <Compile Include="Predicates\ComparisonPredicates\ComparisonPredicateRenderer.cs" />
@@ -94,9 +96,10 @@
     <Compile Include="RenderableEntities\IRenderer.cs" />
     <Compile Include="RendererFactories\IRendererFactory.cs" />
     <Compile Include="Clauses\SelectClause\ISelectClause.cs" />
+    <Compile Include="ResultSets\Tables\IDerivedTable.cs" />
     <Compile Include="Shortcuts\SelectStatementShortcuts.cs" />
     <Compile Include="Statements\IStatement.cs" />
-    <Compile Include="Statements\SelectStatement\ISelectStatement.cs" />
+    <Compile Include="Statements\Query\IQuery.cs" />
     <Compile Include="ResultSets\Tables\ITable.cs" />
     <Compile Include="Tags\ITaggableEntity.cs" />
     <Compile Include="ResultSets\JoinSets\JoinSet.cs" />
@@ -115,8 +118,8 @@
     <Compile Include="RenderableEntities\IdentifiedEntities\Schema.cs" />
     <Compile Include="Clauses\SelectClause\SelectClause.cs" />
     <Compile Include="Clauses\SelectClause\SelectClauseRenderer.cs" />
-    <Compile Include="Statements\SelectStatement\SelectStatement.cs" />
-    <Compile Include="Statements\SelectStatement\StatementRenderer.cs" />
+    <Compile Include="Statements\Query\Query.cs" />
+    <Compile Include="Statements\StatementRenderer.cs" />
     <Compile Include="RenderableEntities\IdentifiedEntities\Server.cs" />
     <Compile Include="Options\Settings.cs" />
     <Compile Include="RendererFactories\StandardRendererFactory.cs" />
@@ -125,6 +128,7 @@
     <Compile Include="Clauses\WhereClause\WhereClause.cs" />
     <Compile Include="Clauses\WhereClause\WhereClauseRenderer.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
