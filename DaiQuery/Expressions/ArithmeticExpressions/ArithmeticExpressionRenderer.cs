@@ -44,7 +44,7 @@ namespace DaiQuery
             return Renderable.ConsiderAsOperand ? baseOptions | RenderOptions.EncloseInRoundBrackets : baseOptions;
         }
 
-        protected internal override string RenderFlatRegardlessOfInversed()
+        protected internal override string RenderPlainRegardlessOfInversed()
         {
             return JoinStrings(Strings.Symbols.WhiteSpace + RenderOperator(Renderable.Operator) + Strings.Symbols.WhiteSpace, RenderAsOperand(Renderable.FirstOperand), RenderAsOperand(Renderable.SecondOperand));
         }

@@ -9,7 +9,7 @@
 
         protected abstract string RenderConstantValue(T value);
 
-        protected internal override string RenderFlatRegardlessOfInversed()
+        protected internal override string RenderPlainRegardlessOfInversed()
         {
             return RenderConstantValue(Renderable.Value);
         }

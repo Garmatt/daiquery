@@ -11,11 +11,11 @@
             : base(expression)
         { }
 
-        protected internal abstract string RenderFlatRegardlessOfInversed();
+        protected internal abstract string RenderPlainRegardlessOfInversed();
 
         public override string RenderPlain()
         {
-            string result = RenderFlatRegardlessOfInversed();
+            string result = RenderPlainRegardlessOfInversed();
             if (!string.IsNullOrWhiteSpace(result) && Renderable.IsInversed)
                 result = JoinStrings(string.Empty, Strings.Math.Minus, Strings.Symbols.OpenRoundBracket, result, Strings.Symbols.ClosedRoundBracket);
 

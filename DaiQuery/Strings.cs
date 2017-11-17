@@ -26,6 +26,14 @@
             public const string Select = "SELECT";
             public const string And = "AND";
             public const string Or = "OR";
+            public const string Join = "JOIN";
+            public const string Inner = "INNER";
+            public const string Outer = "OUTER";
+            public const string Left = "LEFT";
+            public const string Right = "RIGHT";
+            public const string Full = "FULL";
+            public const string Cross = "CROSS";
+            public const string On = "ON";
         }
 
         public static class Math

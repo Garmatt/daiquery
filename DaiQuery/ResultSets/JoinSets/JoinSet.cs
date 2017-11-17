@@ -2,27 +2,13 @@
 {
     public class JoinSet : ResultSet, IJoinSet
     {
-        public JoinType JoinType
-        {
-            get;
-            set;
-        }
+        public JoinType JoinType { get; set; }
 
-        public ResultSet LeftMember
-        {
-            get;
-            set;
-        }
-        public ResultSet RightMember
-        {
-            get;
-            set;
-        }
-        public Predicate Condition
-        {
-            get;
-            set;
-        }
+        public ResultSet LeftMember { get; set; }
+
+        public ResultSet RightMember { get; set; }
+
+        public Predicate Condition { get; set; }
         
         internal JoinSet(ResultSet leftMember, JoinType joinType, ResultSet rightMember)
             : base()

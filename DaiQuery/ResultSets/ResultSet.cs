@@ -19,5 +19,7 @@
         {
             get { return IsEmpty(); }
         }
+
+        bool IResultSet.ConsiderAsJoinMember { get; set; }
     }
 }

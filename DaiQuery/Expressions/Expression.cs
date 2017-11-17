@@ -5,37 +5,14 @@
     /// </summary>
     public abstract class Expression : LanguageElement, IExpression
     {
-        private bool isInversed;
-        private bool considerAsOperand;
-
         internal new IAliasableEntityRenderer Renderer
         {
             get { return (IAliasableEntityRenderer)base.Renderer; }
         }
 
-        bool IExpression.IsInversed
-        {
-            get
-            {
-                return isInversed;
-            }
-            set
-            {
-                isInversed = value;
-            }
-        }
+        bool IExpression.IsInversed { get; set; }
 
-        bool IExpression.ConsiderAsOperand
-        {
-            get
-            {
-                return considerAsOperand;
-            }
-            set
-            {
-                considerAsOperand = value;
-            }
-        }
+        bool IExpression.ConsiderAsOperand { get; set; }
 
         string IExpression.Header
         {
@@ -46,10 +23,7 @@
 
         public Expression()
             : base()
-        {
-            isInversed = false;
-            considerAsOperand = false;
-        }
+        { }
 
         internal abstract Expression GetClone();
 

@@ -14,7 +14,7 @@ namespace DaiQuery
             : base(column)
         { }
 
-        protected internal override string RenderFlatRegardlessOfInversed()
+        protected internal override string RenderPlainRegardlessOfInversed()
         {
             string identifier = Renderable.Identifier;
             if (string.IsNullOrWhiteSpace(identifier))
