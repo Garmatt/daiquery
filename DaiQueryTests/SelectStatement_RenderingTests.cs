@@ -1,5 +1,6 @@
 ﻿using DaiQuery;
 using NUnit.Framework;
+using DaiQuery.Shortcuts;
 
 namespace DaiQueryTests
 {

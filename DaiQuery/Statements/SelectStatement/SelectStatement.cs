@@ -43,10 +43,10 @@ namespace DaiQuery
             return Select(columnNames.Select(columnName => new Column(columnName)));
         }
 
-        public SelectStatement Select(params Expression[] expressionsToSelect)
-        {
-            return Select((IEnumerable<Expression>)expressionsToSelect);
-        }
+        //public SelectStatement Select(params Expression[] expressionsToSelect)
+        //{
+        //    return Select((IEnumerable<Expression>)expressionsToSelect);
+        //}
 
         public SelectStatement Select(IEnumerable<Expression> expressionsToSelect)
         {

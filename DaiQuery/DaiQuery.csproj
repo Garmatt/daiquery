@@ -94,6 +94,7 @@
     <Compile Include="RenderableEntities\IRenderer.cs" />
     <Compile Include="RendererFactories\IRendererFactory.cs" />
     <Compile Include="Clauses\SelectClause\ISelectClause.cs" />
+    <Compile Include="Shortcuts\SelectStatementShortcuts.cs" />
     <Compile Include="Statements\IStatement.cs" />
     <Compile Include="Statements\SelectStatement\ISelectStatement.cs" />
     <Compile Include="ResultSets\Tables\ITable.cs" />
